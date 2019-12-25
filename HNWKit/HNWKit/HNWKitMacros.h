@@ -17,11 +17,15 @@
 #endif
 
 #ifndef HNWKitStrongTransfer
-#define HNWKitStrongTransfer(obj) __strong typeof(HNWKitWeakReferenceKey(obj)) obj = HNWKitWeakReferenceKey(obj)
+#define HNWKitStrongTransfer(obj) __strong typeof(HNWKitWeakReferenceKey(obj)) HNWKitStrongReferenceKey(obj) = HNWKitWeakReferenceKey(obj)
 #endif
 
 #ifndef HNWKitWeakReferenceKey
-#define HNWKitWeakReferenceKey(K) HNWKitTokenConcatenation(hnwkit_weak_reference_, K)
+#define HNWKitWeakReferenceKey(k) HNWKitTokenConcatenation(s, WeakRef)
+#endif
+
+#ifndef HNWKitStrongReferenceKey
+#define HNWKitStrongReferenceKey(k) HNWKitTokenConcatenation(s, StrongRef)
 #endif
 
 /** 主屏幕宽/高 */

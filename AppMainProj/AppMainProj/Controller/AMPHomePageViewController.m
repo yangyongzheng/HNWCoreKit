@@ -18,13 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.view.backgroundColor = HNWColorRGBAHexInt(0xFF442F);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"%@", HNWColorRGBAHexInt(112233));
-    NSLog(@"%@", HNWColorRGBAHexInt(0x112233));
-    NSLog(@"%@", HNWColorRGBAHexInt(0x001100));
+    
 }
 
 @end

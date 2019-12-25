@@ -29,4 +29,8 @@
 #define HNWKitTokenConcatenation(t1, t2) t1 ## t2
 #endif
 
+#ifndef HNWKitFileName
+#define HNWKitFileName [NSString stringWithUTF8String:__FILE__].lastPathComponent
+#endif
+
 #endif /* HNWKitDefines_h */
