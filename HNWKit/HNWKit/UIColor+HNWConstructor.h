@@ -30,15 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /** 根据RGBA/ARGB 16进制数创建颜色 */
-#define HNWColorRGBAHexInt(hexInt) [UIColor hnw_colorWithRGBAHexCode:@HNWColorHexCodeFromHexInt(hexInt)]
-#define HNWColorARGBHexInt(hexInt) [UIColor hnw_colorWithARGBHexCode:@HNWColorHexCodeFromHexInt(hexInt)]
+#define HNWColorRGBAHexInt(hexInt) [UIColor hnw_colorWithRGBAHexCode:HNWKitStringConverter(hexInt)]
+#define HNWColorARGBHexInt(hexInt) [UIColor hnw_colorWithARGBHexCode:HNWKitStringConverter(hexInt)]
 
 /** 根据RGBA/ARGB 16进制字符串创建颜色 */
 #define HNWColorRGBAHexCode(hexCode) [UIColor hnw_colorWithRGBAHexCode:hexCode]
 #define HNWColorARGBHexCode(hexCode) [UIColor hnw_colorWithARGBHexCode:hexCode]
-
-/** 16进制数转字符串 */
-#define HNWColorHexCodeFromHexInt(hexInt) HNWKitStringizing(hexInt)
 
 @interface UIColor (HNWConstructor)
 

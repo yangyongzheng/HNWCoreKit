@@ -21,11 +21,11 @@
 #endif
 
 #ifndef HNWKitWeakReferenceKey
-#define HNWKitWeakReferenceKey(k) HNWKitTokenConcatenation(s, WeakRef)
+#define HNWKitWeakReferenceKey(k) HNWKitTokenConcatenation(k, WeakRef)
 #endif
 
 #ifndef HNWKitStrongReferenceKey
-#define HNWKitStrongReferenceKey(k) HNWKitTokenConcatenation(s, StrongRef)
+#define HNWKitStrongReferenceKey(k) HNWKitTokenConcatenation(k, StrongRef)
 #endif
 
 /** 主屏幕宽/高 */

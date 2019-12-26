@@ -20,6 +20,7 @@ FOUNDATION_EXPORT const unsigned char HNWKitVersionString[];
 #import "HNWKitMacros.h"
 #import "HNWAssertNotEmpty.h"
 #import "HNWLayoutConstraintConstructor.h"
+#import "HNWWeakTimer.h"
 
 #import "UIColor+HNWConstructor.h"
 

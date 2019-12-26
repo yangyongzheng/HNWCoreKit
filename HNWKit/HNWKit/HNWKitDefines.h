@@ -20,8 +20,12 @@
 #endif
 
 /** 字符串化 */
-#ifndef HNWKitStringizing
-#define HNWKitStringizing(s) #s
+#ifndef HNWKitStringConverter
+#define HNWKitStringConverter(str) @HNWKitCStringizing(str)
+#endif
+
+#ifndef HNWKitCStringizing
+#define HNWKitCStringizing(s) #s
 #endif
 
 /** 拼接Token */
