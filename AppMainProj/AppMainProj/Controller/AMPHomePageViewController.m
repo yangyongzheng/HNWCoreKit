@@ -10,7 +10,7 @@
 #import "AMPTestViewController.h"
 #import <HNWKit/HNWKit.h>
 
-@interface AMPHomePageViewController ()
+@interface AMPHomePageViewController () <HNWKeyboardMonitorDelegate>
 
 @end
 
@@ -25,6 +25,14 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     AMPTestViewController *testVC = [[AMPTestViewController alloc] init];
     [self.navigationController pushViewController:testVC animated:YES];
+}
+
+- (void)keyboardMonitor:(HNWKeyboardMonitor *)keyboardMonitor keyboardWillShow:(HNWKeyboardInfo *)info {
+    
+}
+
+- (void)keyboardMonitor:(HNWKeyboardMonitor *)keyboardMonitor keyboardWillHide:(HNWKeyboardInfo *)info {
+    
 }
 
 @end

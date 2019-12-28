@@ -81,6 +81,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE681B9723B62008006792E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CE6BFF4C23B225060049BDF2 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +112,7 @@
 			children = (
 				CE6BFF5823B225070049BDF2 /* AppDelegate.h */,
 				CE6BFF5923B225070049BDF2 /* AppDelegate.m */,
+				CE681B9723B62008006792E2 /* Model */,
 				CE6BFFB623B229AE0049BDF2 /* Controller */,
 				CE6BFF5E23B225070049BDF2 /* Main.storyboard */,
 				CE6BFF6123B225080049BDF2 /* Assets.xcassets */,

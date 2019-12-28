@@ -30,6 +30,10 @@
 		CE6DC0B323B38E62006FE9EB /* HNWTabMenuViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6DC0A723B38E62006FE9EB /* HNWTabMenuViewConfiguration.m */; };
 		CE70277823B4D46E002CB592 /* HNWWeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = CE70277623B4D46E002CB592 /* HNWWeakTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE70277923B4D46E002CB592 /* HNWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70277723B4D46E002CB592 /* HNWWeakTimer.m */; };
+		CE779EDB23B72F3F00B85822 /* HNWAppMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = CE779ED923B72F3F00B85822 /* HNWAppMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE779EDC23B72F3F00B85822 /* HNWAppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */; };
+		CE779EDF23B7440B00B85822 /* HNWKeyboardMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE779EE023B7440B00B85822 /* HNWKeyboardMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		CE6DC0A723B38E62006FE9EB /* HNWTabMenuViewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWTabMenuViewConfiguration.m; sourceTree = "<group>"; };
 		CE70277623B4D46E002CB592 /* HNWWeakTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWWeakTimer.h; sourceTree = "<group>"; };
 		CE70277723B4D46E002CB592 /* HNWWeakTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWWeakTimer.m; sourceTree = "<group>"; };
+		CE779ED923B72F3F00B85822 /* HNWAppMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAppMonitor.h; sourceTree = "<group>"; };
+		CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAppMonitor.m; sourceTree = "<group>"; };
+		CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWKeyboardMonitor.h; sourceTree = "<group>"; };
+		CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWKeyboardMonitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,10 @@
 				CE6DC09F23B38E62006FE9EB /* HNWLayoutConstraintConstructor.m */,
 				CE70277623B4D46E002CB592 /* HNWWeakTimer.h */,
 				CE70277723B4D46E002CB592 /* HNWWeakTimer.m */,
+				CE779ED923B72F3F00B85822 /* HNWAppMonitor.h */,
+				CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */,
+				CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */,
+				CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */,
 				CE6DC09B23B38E62006FE9EB /* HNWTabMenuView */,
 				CE6BFFC923B2300E0049BDF2 /* Info.plist */,
 				CE6BFFEB23B237980049BDF2 /* UIColor+HNWConstructor.h */,
@@ -161,9 +173,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE779EDF23B7440B00B85822 /* HNWKeyboardMonitor.h in Headers */,
 				CE6DC0AA23B38E62006FE9EB /* HNWTabMenuViewCollectionViewCell.h in Headers */,
 				CE6BFFE423B231820049BDF2 /* HNWKitDefines.h in Headers */,
 				CE6BFFED23B237980049BDF2 /* UIColor+HNWConstructor.h in Headers */,
+				CE779EDB23B72F3F00B85822 /* HNWAppMonitor.h in Headers */,
 				CE6DC0A923B38E62006FE9EB /* HNWTabMenuView.h in Headers */,
 				CE6BFFE923B2347A0049BDF2 /* HNWAssertNotEmpty.h in Headers */,
 				CE6DC0AC23B38E62006FE9EB /* HNWTabMenuViewItem.h in Headers */,
@@ -276,6 +290,8 @@
 				CE70277923B4D46E002CB592 /* HNWWeakTimer.m in Sources */,
 				CE6DC0AF23B38E62006FE9EB /* HNWTabMenuViewCollectionViewCell.m in Sources */,
 				CE6BFFEE23B237980049BDF2 /* UIColor+HNWConstructor.m in Sources */,
+				CE779EDC23B72F3F00B85822 /* HNWAppMonitor.m in Sources */,
+				CE779EE023B7440B00B85822 /* HNWKeyboardMonitor.m in Sources */,
 				CE6DC0B023B38E62006FE9EB /* HNWTabMenuView.m in Sources */,
 				CE6DC0B323B38E62006FE9EB /* HNWTabMenuViewConfiguration.m in Sources */,
 				CE6DC0AB23B38E62006FE9EB /* HNWLayoutConstraintConstructor.m in Sources */,

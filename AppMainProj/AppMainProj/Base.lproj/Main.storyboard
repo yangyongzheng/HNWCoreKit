@@ -20,7 +20,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入测试代码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VE4-Oh-rPW">
+                                <rect key="frame" x="15" y="81" width="290" height="30"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.6588235294" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VE4-Oh-rPW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AzP-tL-yil"/>
+                            <constraint firstItem="VE4-Oh-rPW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="dhv-JZ-IWg"/>
+                            <constraint firstItem="VE4-Oh-rPW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="2/5" id="zKx-wB-efU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="5VO-fx-zjX"/>
                 </viewController>
@@ -53,6 +67,7 @@
                 <tabBarController storyboardIdentifier="AMPDefaultTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="z4Y-yO-U1O" customClass="AMPDefaultTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Xe-TL-61k">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

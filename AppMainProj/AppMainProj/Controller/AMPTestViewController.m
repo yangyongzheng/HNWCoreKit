@@ -9,7 +9,7 @@
 #import "AMPTestViewController.h"
 #import <HNWKit/HNWKit.h>
 
-@interface AMPTestViewController ()
+@interface AMPTestViewController () <HNWAppMonitorDelegate>
 {
     HNWWeakTimer *_timer;
 }
@@ -21,21 +21,25 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
-    _timer = [[HNWWeakTimer alloc] init];
+    [HNWAppMonitor addDelegate:self];
+    [HNWAppMonitor addDelegate:self];
+    [HNWAppMonitor addDelegate:self];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if (arc4random() % 2 == 0) {
-        [_timer scheduledWithTimeInterval:1000
-                                  repeats:YES
-                                    block:^(HNWWeakTimer * _Nonnull timerHolder) {
-                                        NSLog(@"来了 %@", timerHolder);
-                                    }];
-    } else {
-        [_timer scheduledWithCountdown:60000 interval:1000 block:^(HNWWeakTimer * _Nonnull timerHolder, long currentCountdown) {
-            NSLog(@"来了 %ld", currentCountdown);
-        }];
-    }
+    
+}
+
+- (void)applicationDidFinishLaunching:(HNWAppMonitor *)appMonitor {
+    
+}
+
+- (void)applicationDidEnterBackground:(HNWAppMonitor *)appMonitor {
+    [HNWAppMonitor removeDelegate:self];
+}
+
+- (void)applicationWillEnterForeground:(HNWAppMonitor *)appMonitor {
+    
 }
 
 @end

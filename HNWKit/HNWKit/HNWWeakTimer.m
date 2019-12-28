@@ -27,7 +27,6 @@
 #pragma mark - Lifecycle
 - (void)dealloc {
     [self invalidate];
-    NSLog(@"%s", __func__);
 }
 
 #pragma mark - Public
