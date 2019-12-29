@@ -11,6 +11,8 @@
 		CE028D8823B87EA900EFD1A5 /* HNWPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */; };
 		CE028D8B23B887E400EFD1A5 /* HNWPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE028D8C23B887E400EFD1A5 /* HNWPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE028D8A23B887E400EFD1A5 /* HNWPhotoManager.m */; };
+		CE1F890623B8BCDF00FC7126 /* HNWDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1F890423B8BCDF00FC7126 /* HNWDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE1F890723B8BCDF00FC7126 /* HNWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1F890523B8BCDF00FC7126 /* HNWDevice.m */; };
 		CE2E42AA23B78AA50064025B /* NSData+HNWGZIP.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2E42A823B78AA50064025B /* NSData+HNWGZIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE2E42AB23B78AA50064025B /* NSData+HNWGZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */; };
 		CE2E42AE23B790750064025B /* NSString+HNWAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2E42AC23B790750064025B /* NSString+HNWAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,6 +63,8 @@
 		CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWPathManager.m; sourceTree = "<group>"; };
 		CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWPhotoManager.h; sourceTree = "<group>"; };
 		CE028D8A23B887E400EFD1A5 /* HNWPhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWPhotoManager.m; sourceTree = "<group>"; };
+		CE1F890423B8BCDF00FC7126 /* HNWDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWDevice.h; sourceTree = "<group>"; };
+		CE1F890523B8BCDF00FC7126 /* HNWDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWDevice.m; sourceTree = "<group>"; };
 		CE2E42A823B78AA50064025B /* NSData+HNWGZIP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+HNWGZIP.h"; sourceTree = "<group>"; };
 		CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+HNWGZIP.m"; sourceTree = "<group>"; };
 		CE2E42AC23B790750064025B /* NSString+HNWAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HNWAdditions.h"; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */,
 				CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */,
 				CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */,
+				CE1F890423B8BCDF00FC7126 /* HNWDevice.h */,
+				CE1F890523B8BCDF00FC7126 /* HNWDevice.m */,
 				CE6DC09B23B38E62006FE9EB /* HNWTabMenuView */,
 				CE6BFFC923B2300E0049BDF2 /* Info.plist */,
 				CE6BFFEB23B237980049BDF2 /* UIColor+HNWConstructor.h */,
@@ -217,6 +223,7 @@
 				CE2E42AA23B78AA50064025B /* NSData+HNWGZIP.h in Headers */,
 				CE6DC0B123B38E62006FE9EB /* HNWLayoutConstraintConstructor.h in Headers */,
 				CE2E42AE23B790750064025B /* NSString+HNWAdditions.h in Headers */,
+				CE1F890623B8BCDF00FC7126 /* HNWDevice.h in Headers */,
 				CE6DC0AE23B38E62006FE9EB /* HNWTabMenuItemBadgeProviders.h in Headers */,
 				CE2E42B223B792540064025B /* HNWDateManager.h in Headers */,
 				CE6DC0AD23B38E62006FE9EB /* HNWTabMenuViewConfiguration.h in Headers */,
@@ -336,6 +343,7 @@
 				CE2E42AF23B790750064025B /* NSString+HNWAdditions.m in Sources */,
 				CE6DC0B223B38E62006FE9EB /* HNWTabMenuViewItem.m in Sources */,
 				CE028D8C23B887E400EFD1A5 /* HNWPhotoManager.m in Sources */,
+				CE1F890723B8BCDF00FC7126 /* HNWDevice.m in Sources */,
 				CE6BFFEA23B2347A0049BDF2 /* HNWAssertNotEmpty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,6 +37,8 @@
     } failureBlock:^(NSError * _Nonnull error) {
         
     }];
+    
+    [HNWDevice load];
 }
 
 @end
