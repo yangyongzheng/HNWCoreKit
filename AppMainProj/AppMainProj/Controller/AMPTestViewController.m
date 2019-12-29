@@ -9,10 +9,8 @@
 #import "AMPTestViewController.h"
 #import <HNWKit/HNWKit.h>
 
-@interface AMPTestViewController () <HNWAppMonitorDelegate>
-{
-    HNWWeakTimer *_timer;
-}
+@interface AMPTestViewController ()
+
 @end
 
 @implementation AMPTestViewController
@@ -21,25 +19,24 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
-    [HNWAppMonitor addDelegate:self];
-    [HNWAppMonitor addDelegate:self];
-    [HNWAppMonitor addDelegate:self];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UIImage *image = [UIImage imageNamed:@"test"];
+    HNWPhotoManager *manager = HNWPhotoManager.sharedManager;
+    [manager requestSaveImages:@[image, image, image] successBlock:^{
+        NSLog(@"success");
+    } failureBlock:^(NSError * _Nonnull error) {
+        NSLog(@"failure");
+    }];
     
-}
-
-- (void)applicationDidFinishLaunching:(HNWAppMonitor *)appMonitor {
-    
-}
-
-- (void)applicationDidEnterBackground:(HNWAppMonitor *)appMonitor {
-    [HNWAppMonitor removeDelegate:self];
-}
-
-- (void)applicationWillEnterForeground:(HNWAppMonitor *)appMonitor {
-    
+    NSURL *url = [NSURL fileURLWithPath:HNWUserDocumentsDirectory()];
+    NSArray *mediaItems = @[[HNWPhotoMediaItem itemWithFileURL:url videoType:NO]];
+    [manager requestSaveMediaItems:mediaItems successBlock:^{
+        
+    } failureBlock:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 @end
