@@ -1,15 +1,15 @@
 //
-//  NSString+HNWAdditions.m
+//  NSString+HNWKit.m
 //  HNWKit
 //
-//  Created by Young on 2019/12/28.
+//  Created by Young on 2019/12/31.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "NSString+HNWAdditions.h"
+#import "NSString+HNWKit.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@implementation NSString (HNWAdditions)
+@implementation NSString (HNWKit)
 
 - (NSString *)hnw_MD5Encryption {
     const char *cString = self.UTF8String;

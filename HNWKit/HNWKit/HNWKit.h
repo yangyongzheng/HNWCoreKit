@@ -28,8 +28,8 @@ FOUNDATION_EXPORT const unsigned char HNWKitVersionString[];
 #import "HNWKeyboardMonitor.h"
 #import "HNWDevice.h"
 
-#import "UIColor+HNWConstructor.h"
+#import "UIColor+HNWKit.h"
 #import "NSData+HNWGZIP.h"
-#import "NSString+HNWAdditions.h"
+#import "NSString+HNWKit.h"
 
 #import "HNWTabMenuView.h"

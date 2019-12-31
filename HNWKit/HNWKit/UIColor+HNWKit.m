@@ -1,15 +1,15 @@
 //
-//  UIColor+HNWConstructor.m
+//  UIColor+HNWKit.m
 //  HNWKit
 //
-//  Created by Young on 2019/12/24.
+//  Created by Young on 2019/12/31.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "UIColor+HNWConstructor.h"
+#import "UIColor+HNWKit.h"
 #import "HNWAssertNotEmpty.h"
 
-@implementation UIColor (HNWConstructor)
+@implementation UIColor (HNWKit)
 
 #pragma mark - Public
 + (UIColor *)hnw_randomColor {

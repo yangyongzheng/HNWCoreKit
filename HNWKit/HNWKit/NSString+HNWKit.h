@@ -1,8 +1,8 @@
 //
-//  NSString+HNWAdditions.h
+//  NSString+HNWKit.h
 //  HNWKit
 //
-//  Created by Young on 2019/12/28.
+//  Created by Young on 2019/12/31.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (HNWAdditions)
+@interface NSString (HNWKit)
 
 /** MD5加密后的字符串（大写字母数字组合） */
 @property (nonatomic, readonly, copy) NSString *hnw_MD5Encryption;

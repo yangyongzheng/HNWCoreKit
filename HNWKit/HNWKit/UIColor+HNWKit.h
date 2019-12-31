@@ -1,12 +1,11 @@
 //
-//  UIColor+HNWConstructor.h
+//  UIColor+HNWKit.h
 //  HNWKit
 //
-//  Created by Young on 2019/12/24.
+//  Created by Young on 2019/12/31.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "HNWKitDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -37,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define HNWColorRGBAHexCode(hexCode) [UIColor hnw_colorWithRGBAHexCode:hexCode]
 #define HNWColorARGBHexCode(hexCode) [UIColor hnw_colorWithARGBHexCode:hexCode]
 
-@interface UIColor (HNWConstructor)
+@interface UIColor (HNWKit)
 
 /** 随机色 */
 + (UIColor *)hnw_randomColor;
