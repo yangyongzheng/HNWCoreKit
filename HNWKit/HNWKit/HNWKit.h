@@ -27,9 +27,15 @@ FOUNDATION_EXPORT const unsigned char HNWKitVersionString[];
 #import "HNWAppMonitor.h"
 #import "HNWKeyboardMonitor.h"
 #import "HNWDevice.h"
+#import "HNWAlertWrapperController.h"
+#import "HNWFormSheetWrapperController.h"
 
 #import "UIColor+HNWKit.h"
 #import "NSData+HNWGZIP.h"
 #import "NSString+HNWKit.h"
+#import "UIView+HNWKit.h"
+#import "UIView+HNWNibLoading.h"
+#import "UIViewController+HNWNibLoading.h"
+#import "UIAlertController+HNWKit.h"
 
 #import "HNWTabMenuView.h"

@@ -1,14 +1,14 @@
 //
-//  UIViewController+HNWKit.m
+//  UIViewController+HNWNibLoading.m
 //  HNWKit
 //
 //  Created by Young on 2019/12/31.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "UIViewController+HNWKit.h"
+#import "UIViewController+HNWNibLoading.h"
 
-@implementation UIViewController (HNWKit)
+@implementation UIViewController (HNWNibLoading)
 
 static NSString * const HNWKitMainStoryboardName = @"Main";
 

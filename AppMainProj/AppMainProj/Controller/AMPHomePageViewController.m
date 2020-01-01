@@ -23,8 +23,14 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    AMPTestViewController *testVC = [[AMPTestViewController alloc] init];
-    [self.navigationController pushViewController:testVC animated:YES];
+    if (self.childViewControllers.count > 0) {} else {
+        AMPTestViewController *testVC = [[AMPTestViewController alloc] init];
+        [self addChildViewController:testVC];
+        [self.view addSubview:testVC.view];
+        testVC.view.frame = CGRectMake(0, 200, CGRectGetWidth(self.view.frame), HNWKIT_SCREEN_HEIGHT-200);
+        testVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
+        [testVC didMoveToParentViewController:self];
+    }
 }
 
 @end

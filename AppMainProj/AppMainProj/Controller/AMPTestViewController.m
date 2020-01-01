@@ -10,7 +10,9 @@
 #import <HNWKit/HNWKit.h>
 
 @interface AMPTestViewController ()
-
+{
+    UIView *redView;
+}
 @end
 
 @implementation AMPTestViewController
@@ -19,26 +21,20 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
+    redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 260, 360)];
+    redView.backgroundColor = UIColor.redColor;
+    [redView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideAlertView)]];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UIImage *image = [UIImage imageNamed:@"test"];
-    HNWPhotoManager *manager = HNWPhotoManager.sharedManager;
-    [manager requestSaveImages:@[image, image, image] successBlock:^{
-        NSLog(@"success");
-    } failureBlock:^(NSError * _Nonnull error) {
-        NSLog(@"failure");
-    }];
-    
-    NSURL *url = [NSURL fileURLWithPath:HNWUserDocumentsDirectory()];
-    NSArray *mediaItems = @[[HNWPhotoMediaItem itemWithFileURL:url videoType:NO]];
-    [manager requestSaveMediaItems:mediaItems successBlock:^{
-        
-    } failureBlock:^(NSError * _Nonnull error) {
-        
-    }];
-    
-    [HNWDevice load];
+    if (!redView.alertWrapperController) {
+        HNWAlertWrapperController *vc = [HNWAlertWrapperController wrapperControllerWithAlertView:redView];
+        [vc showWithPresentingViewController:self animationTransition:HNWAlertAnimationTransitionSlideFromRight completion:nil];
+    }
+}
+
+- (void)hideAlertView {
+    [redView.alertWrapperController hideWithAnimationTransition:HNWAlertAnimationTransitionNone completion:nil];
 }
 
 @end

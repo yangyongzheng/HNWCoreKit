@@ -1,5 +1,5 @@
 //
-//  UIViewController+HNWKit.h
+//  UIViewController+HNWNibLoading.h
 //  HNWKit
 //
 //  Created by Young on 2019/12/31.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (HNWKit)
+@interface UIViewController (HNWNibLoading)
 
 /**
  从 Storyboard 实例化对象，默认 storyboardName 为`Main`，bundle为`mainBundle`，identifier为类名称
