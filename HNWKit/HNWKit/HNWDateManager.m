@@ -49,32 +49,34 @@
     return locale;
 }
 
-+ (NSDateFormatter *)chineseDateFormatterWithFormat:(NSString *)dateFormat {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [self resetDateFormatter:dateFormatter dateFormat:dateFormat];
-    return dateFormatter;
-}
-
 + (NSString *)stringFromSeconds:(NSTimeInterval)seconds dateFormat:(NSString *)dateFormat {
     if (seconds > 0 && dateFormat && [dateFormat isKindOfClass:[NSString class]] && dateFormat.length > 0) {
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:seconds];
-        if (date) {
-            NSDateFormatter *formatter = [self defaultDateFormatter:dateFormat];
-            return [formatter stringFromDate:date];
-        }
+        return [self stringFromDate:date dateFormat:dateFormat];
+    } else {
+        return nil;
     }
-    return nil;
 }
 
 + (NSString *)stringFromMilliseconds:(NSTimeInterval)milliseconds dateFormat:(NSString *)dateFormat {
     return [self stringFromSeconds:milliseconds/1000.0 dateFormat:dateFormat];
 }
 
++ (NSString *)stringFromDate:(NSDate *)date dateFormat:(NSString *)dateFormat {
+    if (date && [date isKindOfClass:[NSDate class]]) {
+        NSDateFormatter *dateFormatter = [self defaultDateFormatter:dateFormat];
+        return [dateFormatter stringFromDate:date];
+    } else {
+        return nil;
+    }
+}
+
 + (BOOL)isDate:(NSDate *)date inSameDayAsDate:(NSDate *)toDate {
     if (date && [date isKindOfClass:[NSDate class]] && toDate && [toDate isKindOfClass:[NSDate class]]) {
-        return [HNWDateManager.gregorianCalendar isDate:date inSameDayAsDate:toDate];
+        return [self.gregorianCalendar isDate:date inSameDayAsDate:toDate];
+    } else {
+        return NO;
     }
-    return NO;
 }
 
 #pragma mark - Misc

@@ -40,14 +40,14 @@ static NSString * const HNWDateFormatterForeignStyle = @"MMM dd, yyyy h:mm:ss a"
 /** 美国英语本地化，单例对象 */
 @property (class, readonly, strong) NSLocale *americanEnglishLocale;
 
-/** 中国日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
-+ (NSDateFormatter *)chineseDateFormatterWithFormat:(NSString *)dateFormat;
-
-/** 时间戳(单位秒)转字符串，日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
+/** 时间戳(单位秒)转字符串，日期格式化器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
 + (nullable NSString *)stringFromSeconds:(NSTimeInterval)seconds dateFormat:(NSString *)dateFormat;
 
-/** 时间戳(单位毫秒)转字符串，日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
+/** 时间戳(单位毫秒)转字符串，日期格式化器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
 + (nullable NSString *)stringFromMilliseconds:(NSTimeInterval)milliseconds dateFormat:(NSString *)dateFormat;
+
+/** 日期对象转字符串，日期格式化器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
++ (nullable NSString *)stringFromDate:(NSDate *)date dateFormat:(NSString *)dateFormat;
 
 /** 判断两个日期是否是同一天 */
 + (BOOL)isDate:(NSDate *)date inSameDayAsDate:(NSDate *)toDate;
