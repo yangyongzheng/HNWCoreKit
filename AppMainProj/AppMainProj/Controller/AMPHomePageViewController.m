@@ -20,6 +20,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = HNWColorRGBAHexInt(0xFF442F);
+    
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 250)];
+    redView.backgroundColor = UIColor.redColor;
+    [HNWAlertDispatcher.sharedDispatcher showAlertView:redView
+                                             alertMode:HNWAlertModeReplace
+                                        animationStyle:HNWAlertAnimationStyleFade
+                                            completion:^{
+                                                
+                                            }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

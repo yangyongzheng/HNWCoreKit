@@ -27,6 +27,7 @@ FOUNDATION_EXPORT const unsigned char HNWKitVersionString[];
 #import "HNWAppMonitor.h"
 #import "HNWKeyboardMonitor.h"
 #import "HNWDevice.h"
+#import "HNWAlertDispatcher.h"
 #import "HNWAlertWrapperController.h"
 #import "HNWFormSheetWrapperController.h"
 
