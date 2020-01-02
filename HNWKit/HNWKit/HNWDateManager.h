@@ -28,10 +28,10 @@ static NSString * const HNWDateFormatterForeignStyle = @"MMM dd, yyyy h:mm:ss a"
 
 @interface HNWDateManager : NSObject
 
-/** 公历日历，单例对象。中国北京时区，中国简体中文本地化 */
+/** 公历日历，单例对象。中国北京时区(GMT+8)，中国简体中文本地化 */
 @property (class, readonly, strong) NSCalendar *gregorianCalendar;
 
-/** 中国北京时区(东八区)，单例对象 */
+/** 中国北京时区(GMT+8)，单例对象 */
 @property (class, readonly, strong) NSTimeZone *chineseTimeZone;
 
 /** 中国简体中文本地化，单例对象 */
@@ -40,13 +40,13 @@ static NSString * const HNWDateFormatterForeignStyle = @"MMM dd, yyyy h:mm:ss a"
 /** 美国英语本地化，单例对象 */
 @property (class, readonly, strong) NSLocale *americanEnglishLocale;
 
-/** 日期格式化单例对象。默认为公历日历、中国北京时区、中国简体中文本地化、日期格式为 HNWDateFormatterLongStyle */
-@property (class, readonly, strong) NSDateFormatter *defaultDateFormatter;
+/** 中国日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
++ (NSDateFormatter *)chineseDateFormatterWithFormat:(NSString *)dateFormat;
 
-/** 时间戳(单位秒)转字符串 */
+/** 时间戳(单位秒)转字符串，日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
 + (nullable NSString *)stringFromSeconds:(NSTimeInterval)seconds dateFormat:(NSString *)dateFormat;
 
-/** 时间戳(单位毫秒)转字符串 */
+/** 时间戳(单位毫秒)转字符串，日期格式器：公历日历、中国北京时区(GMT+8)、中国简体中文本地化 */
 + (nullable NSString *)stringFromMilliseconds:(NSTimeInterval)milliseconds dateFormat:(NSString *)dateFormat;
 
 /** 判断两个日期是否是同一天 */

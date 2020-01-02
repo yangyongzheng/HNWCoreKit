@@ -10,6 +10,7 @@
 
 @implementation HNWDateManager
 
+#pragma mark - Public
 + (NSCalendar *)gregorianCalendar {
     static NSCalendar *calendar = nil;
     static dispatch_once_t onceToken;
@@ -48,25 +49,17 @@
     return locale;
 }
 
-+ (NSDateFormatter *)defaultDateFormatter {
-    static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-    });
-    dateFormatter.calendar = [self gregorianCalendar];
-    dateFormatter.timeZone = [self chineseTimeZone];
-    dateFormatter.locale = [self chineseSimplifiedLocale];
-    dateFormatter.dateFormat = HNWDateFormatterLongStyle;
++ (NSDateFormatter *)chineseDateFormatterWithFormat:(NSString *)dateFormat {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [self resetDateFormatter:dateFormatter dateFormat:dateFormat];
     return dateFormatter;
 }
 
 + (NSString *)stringFromSeconds:(NSTimeInterval)seconds dateFormat:(NSString *)dateFormat {
-    if (dateFormat && [dateFormat isKindOfClass:[NSString class]] && dateFormat.length > 0) {
+    if (seconds > 0 && dateFormat && [dateFormat isKindOfClass:[NSString class]] && dateFormat.length > 0) {
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:seconds];
         if (date) {
-            NSDateFormatter *formatter = [self defaultDateFormatter];
-            formatter.dateFormat = dateFormat;
+            NSDateFormatter *formatter = [self defaultDateFormatter:dateFormat];
             return [formatter stringFromDate:date];
         }
     }
@@ -82,6 +75,28 @@
         return [HNWDateManager.gregorianCalendar isDate:date inSameDayAsDate:toDate];
     }
     return NO;
+}
+
+#pragma mark - Misc
++ (NSDateFormatter *)defaultDateFormatter:(NSString *)dateFormat {
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+    });
+    [self resetDateFormatter:dateFormatter dateFormat:dateFormat];
+    return dateFormatter;
+}
+
++ (void)resetDateFormatter:(NSDateFormatter *)dateFormatter dateFormat:(NSString *)dateFormat {
+    dateFormatter.calendar = [self gregorianCalendar];
+    dateFormatter.timeZone = [self chineseTimeZone];
+    dateFormatter.locale = [self chineseSimplifiedLocale];
+    if (dateFormat && [dateFormat isKindOfClass:[NSString class]] && dateFormat.length > 0) {
+        dateFormatter.dateFormat = dateFormat;
+    } else {
+        dateFormatter.dateFormat = HNWDateFormatterLongStyle;
+    }
 }
 
 @end
