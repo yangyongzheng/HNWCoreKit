@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HNWGuidePageBrowser : NSObject
 
-+ (instancetype)browserWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages;
++ (instancetype)browserWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages completionHandler:(void (^)(void))completionHandler;
 
 @property (nonatomic, readonly, strong) UIWindow *window;
 @property (nonatomic, readonly, weak) NSArray<UIImage *> *guidePageImages;

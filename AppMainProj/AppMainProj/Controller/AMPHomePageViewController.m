@@ -23,8 +23,11 @@
     UIImage *image = [UIImage imageWithColor:UIColor.redColor size:CGSizeMake(1, 1)];
     UIImage *image2 = [UIImage imageWithColor:UIColor.greenColor size:CGSizeMake(1, 1)];
     UIImage *image3 = [UIImage imageWithColor:UIColor.blueColor size:CGSizeMake(1, 1)];
-    self.guidePageBrowser = [HNWGuidePageBrowser browserWithGuidePageImages:@[image , image2, image3]];
-    self.guidePageBrowser.window.hidden = NO;
+    HNWKitWeakTransfer(self);
+    self.guidePageBrowser = [HNWGuidePageBrowser browserWithGuidePageImages:@[image , image2, image3] completionHandler:^{
+        HNWKitStrongTransfer(self);
+        selfStrongRef.guidePageBrowser = nil;
+    }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
