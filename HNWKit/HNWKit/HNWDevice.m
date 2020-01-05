@@ -19,27 +19,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         device = [[[self class] alloc] init];
-        [device addDidFinishLaunchingNotification];
+        [device setupDefaultConfiguration];
     });
     return device;
 }
 
-- (void)addDidFinishLaunchingNotification {
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(applicationDidFinishLaunchingNotification:)
-                                               name:UIApplicationDidFinishLaunchingNotification
-                                             object:nil];
-}
-
-- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
-    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationDidFinishLaunchingNotification object:nil];
-    [self resetDefaultConfiguration];
-}
-
 - (void)resetDefaultConfiguration {
     _statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
-    _navigationBarHeight = 44;
-    _tabBarHeight = 49;
     if (@available(iOS 11.0, *)) {
         UIWindow *window = UIApplication.sharedApplication.keyWindow;
         if (!window) {
@@ -52,6 +38,24 @@
     } else {
         _safeAreaBottomInset = 0;
     }
+}
+
+- (void)setupDefaultConfiguration {
+    _navigationBarHeight = 44;
+    _tabBarHeight = 49;
+    [self addDidFinishLaunchingNotification];
+}
+
+- (void)addDidFinishLaunchingNotification {
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(applicationDidFinishLaunchingNotification:)
+                                               name:UIApplicationDidFinishLaunchingNotification
+                                             object:nil];
+}
+
+- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
+    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationDidFinishLaunchingNotification object:nil];
+    [self resetDefaultConfiguration];
 }
 
 @end

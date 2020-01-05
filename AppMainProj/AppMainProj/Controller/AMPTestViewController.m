@@ -11,7 +11,7 @@
 
 @interface AMPTestViewController ()
 {
-    HNWAlertWindow *alertWindow;
+    
 }
 @end
 
@@ -27,8 +27,6 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(goBack)];
-    alertWindow = [[HNWAlertWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    [alertWindow makeKeyAndVisible];
 }
 
 - (void)goBack {

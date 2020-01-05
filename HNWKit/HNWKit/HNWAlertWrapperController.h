@@ -31,7 +31,6 @@ typedef NS_ENUM(NSInteger, HNWAlertAnimationTransition) {
 @end
 
 
-
 @interface UIView (HNWAlertWrapperController)
 @property (nullable, nonatomic, weak) HNWAlertWrapperController *alertWrapperController;
 @end

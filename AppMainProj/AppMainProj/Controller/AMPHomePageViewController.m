@@ -8,11 +8,10 @@
 
 #import "AMPHomePageViewController.h"
 #import "AMPTestViewController.h"
-#import "AMPWrapperViewController.h"
 #import <HNWKit/HNWKit.h>
 
 @interface AMPHomePageViewController ()
-
+@property (nonatomic, strong) HNWGuidePageBrowser *guidePageBrowser;
 @end
 
 @implementation AMPHomePageViewController
@@ -21,13 +20,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = HNWColorWithRGBAHexInt(0xFF442F);
+    UIImage *image = [UIImage imageWithColor:UIColor.redColor size:CGSizeMake(1, 1)];
+    UIImage *image2 = [UIImage imageWithColor:UIColor.greenColor size:CGSizeMake(1, 1)];
+    UIImage *image3 = [UIImage imageWithColor:UIColor.blueColor size:CGSizeMake(1, 1)];
+    self.guidePageBrowser = [HNWGuidePageBrowser browserWithGuidePageImages:@[image , image2, image3]];
+    self.guidePageBrowser.window.hidden = NO;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     AMPTestViewController *vc = [[AMPTestViewController alloc] init];
-    AMPWrapperViewController *wrapperViewController = [AMPWrapperViewController controllerWithContentViewController:vc];
-    wrapperViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:wrapperViewController animated:YES];
 }
 
 @end

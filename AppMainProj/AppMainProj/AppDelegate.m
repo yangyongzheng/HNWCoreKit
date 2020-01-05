@@ -18,7 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [HNWDevice.sharedDevice resetDefaultConfiguration];
-    NSLog(@"%f-%f", HNWDevice.sharedDevice.safeAreaBottomInset, HNWDevice.sharedDevice.statusBarHeight);
     return YES;
 }
 

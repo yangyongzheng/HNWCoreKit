@@ -1,8 +1,8 @@
 //
-//  HNWAlertWindow.h
+//  UIImage+HNWKit.h
 //  HNWKit
 //
-//  Created by Young on 2020/1/3.
+//  Created by Young on 2020/1/5.
 //  Copyright © 2020 Young. All rights reserved.
 //
 
@@ -10,10 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HNWAlertWindow : UIWindow
+@interface UIImage (HNWKit)
 
-
-
++ (instancetype)imageWithColor:(UIColor *)color size:(CGSize)size;
 
 @end
 

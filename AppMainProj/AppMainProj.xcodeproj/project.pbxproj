@@ -21,7 +21,6 @@
 		CE6BFFB523B2295A0049BDF2 /* AMPDefaultNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFB423B2295A0049BDF2 /* AMPDefaultNavigationController.m */; };
 		CE6BFFE123B230F70049BDF2 /* HNWKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BFFE023B230F70049BDF2 /* HNWKit.framework */; };
 		CE70277C23B4F224002CB592 /* AMPTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70277B23B4F224002CB592 /* AMPTestViewController.m */; };
-		CE82BEE723BF56D600BC9C24 /* AMPWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE82BEE623BF56D600BC9C24 /* AMPWrapperViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +60,6 @@
 		CE6BFFE023B230F70049BDF2 /* HNWKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HNWKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE70277A23B4F224002CB592 /* AMPTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTestViewController.h; sourceTree = "<group>"; };
 		CE70277B23B4F224002CB592 /* AMPTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTestViewController.m; sourceTree = "<group>"; };
-		CE82BEE523BF56D600BC9C24 /* AMPWrapperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPWrapperViewController.h; sourceTree = "<group>"; };
-		CE82BEE623BF56D600BC9C24 /* AMPWrapperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPWrapperViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +165,6 @@
 				CE6BFFA723B226B70049BDF2 /* AMPHomePageViewController.m */,
 				CE70277A23B4F224002CB592 /* AMPTestViewController.h */,
 				CE70277B23B4F224002CB592 /* AMPTestViewController.m */,
-				CE82BEE523BF56D600BC9C24 /* AMPWrapperViewController.h */,
-				CE82BEE623BF56D600BC9C24 /* AMPWrapperViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,7 +272,6 @@
 				CE6BFFA523B2269B0049BDF2 /* AMPBaseViewController.m in Sources */,
 				CE6BFFB223B2293B0049BDF2 /* AMPDefaultTabBarController.m in Sources */,
 				CE6BFFA823B226B70049BDF2 /* AMPHomePageViewController.m in Sources */,
-				CE82BEE723BF56D600BC9C24 /* AMPWrapperViewController.m in Sources */,
 				CE6BFF6823B225080049BDF2 /* main.m in Sources */,
 				CE6BFFB523B2295A0049BDF2 /* AMPDefaultNavigationController.m in Sources */,
 				CE6BFFAB23B228A40049BDF2 /* AMPBaseNavigationController.m in Sources */,

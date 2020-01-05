@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, HNWAlertAnimationStyle) {
 
 @property (class, nonatomic, readonly, strong) HNWAlertDispatcher *sharedDispatcher;
 
-@property (nonatomic, readonly, strong) UIWindow *alertWindow;
+@property (nonatomic, readonly, strong) UIWindow *alertWindow; // alertWindow.rootViewController => UINavigationController => HNWAlertBoxViewController
 @property (nonatomic, readonly, getter=isDisplayingAlertView) BOOL displayingAlertView;
 
 - (void)showAlertView:(UIView *)alertView
