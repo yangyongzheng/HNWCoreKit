@@ -35,6 +35,7 @@
 }
 
 - (void)setupDefaultUI {
+    self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.shadowView];
     [self addSubview:self.animateView];
     if (self.alertView) {

@@ -10,31 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Example:
- 
- HNWColorRGBAHexInt(0x001100);
- HNWColorRGBAHexInt(0x001100FF);
- HNWColorRGBAHexInt(0X001100);
- HNWColorRGBAHexInt(0X001100FF);
- ...
- 
- HNWColorRGBAHexCode(@"001100");
- HNWColorRGBAHexCode(@"001100FF");
- HNWColorRGBAHexCode(@"#001100");
- HNWColorRGBAHexCode(@"#001100FF");
- HNWColorRGBAHexCode(@"0x001100");
- HNWColorRGBAHexCode(@"0x001100FF");
- ...
- */
-
 /** 根据RGBA/ARGB 16进制数创建颜色 */
-#define HNWColorRGBAHexInt(hexInt) [UIColor hnw_colorWithRGBAHexCode:HNWKitStringConverter(hexInt)]
-#define HNWColorARGBHexInt(hexInt) [UIColor hnw_colorWithARGBHexCode:HNWKitStringConverter(hexInt)]
+#define HNWColorWithRGBAHexInt(hexInt) [UIColor hnw_colorWithRGBAHexCode:HNWKitStringConverter(hexInt)]
+#define HNWColorWithARGBHexInt(hexInt) [UIColor hnw_colorWithARGBHexCode:HNWKitStringConverter(hexInt)]
 
 /** 根据RGBA/ARGB 16进制字符串创建颜色 */
-#define HNWColorRGBAHexCode(hexCode) [UIColor hnw_colorWithRGBAHexCode:hexCode]
-#define HNWColorARGBHexCode(hexCode) [UIColor hnw_colorWithARGBHexCode:hexCode]
+#define HNWColorWithRGBAHexCode(hexCode) [UIColor hnw_colorWithRGBAHexCode:hexCode]
+#define HNWColorWithARGBHexCode(hexCode) [UIColor hnw_colorWithARGBHexCode:hexCode]
 
 @interface UIColor (HNWKit)
 

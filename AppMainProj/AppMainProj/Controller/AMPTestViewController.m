@@ -11,7 +11,7 @@
 
 @interface AMPTestViewController ()
 {
-    UIView *redView;
+    HNWAlertWindow *alertWindow;
 }
 @end
 
@@ -21,20 +21,18 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
-    redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 260, 360)];
-    redView.backgroundColor = UIColor.redColor;
-    [redView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideAlertView)]];
+    self.navigationItem.backBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"GoBack"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(goBack)];
+    alertWindow = [[HNWAlertWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    [alertWindow makeKeyAndVisible];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if (!redView.alertWrapperController) {
-        HNWAlertWrapperController *vc = [HNWAlertWrapperController wrapperControllerWithAlertView:redView];
-        [vc showWithPresentingViewController:self animationTransition:HNWAlertAnimationTransitionSlideFromRight completion:nil];
-    }
-}
-
-- (void)hideAlertView {
-    [redView.alertWrapperController hideWithAnimationTransition:HNWAlertAnimationTransitionNone completion:nil];
+- (void)goBack {
+    [self.navigationController.parentViewController.navigationController popViewControllerAnimated:YES];
 }
 
 @end
