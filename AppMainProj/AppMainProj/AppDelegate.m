@@ -17,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [HNWDevice.sharedDevice resetDefaultConfiguration];
+    [HNWDevice initializeConfiguration];
     return YES;
 }
 

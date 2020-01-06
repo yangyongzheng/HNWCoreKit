@@ -29,9 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSInteger currentPageIndex;
 
-@property (nonatomic, weak) id <HNWGuidePageViewControllerDelegate> delegate;
-
-+ (HNWGuidePageViewController *)controllerWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages;
++ (HNWGuidePageViewController *)controllerWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages delegate:(id<HNWGuidePageViewControllerDelegate>)delegate;
 
 @end
 

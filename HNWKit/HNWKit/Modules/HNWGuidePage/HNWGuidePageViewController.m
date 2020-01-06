@@ -7,7 +7,6 @@
 //
 
 #import "HNWGuidePageViewController.h"
-#import "UIImage+HNWKit.h"
 #import "UIColor+HNWKit.h"
 #import "HNWDevice.h"
 
@@ -15,10 +14,25 @@
 @property (nonatomic, readonly, strong) UIImageView *themeImageView;
 @end
 
-@interface HNWGuidePageViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
-{
-    CGPoint _beginDraggingPoint;
+@implementation HNWGuidePageCollectionViewCell
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = UIColor.clearColor;
+        _themeImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _themeImageView.contentMode = UIViewContentModeScaleToFill;
+        _themeImageView.backgroundColor = UIColor.clearColor;
+        _themeImageView.clipsToBounds = YES;
+        _themeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        [self.contentView addSubview:_themeImageView];
+    }
+    return self;
 }
+
+
+@end
+@interface HNWGuidePageViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -27,13 +41,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextButtonBottom;
 
 @property (nonatomic, readwrite, copy) NSArray<UIImage *> *guidePageImages;
+@property (nonatomic, weak) id <HNWGuidePageViewControllerDelegate> delegate;
 @property (nonatomic) NSInteger currentPageIndex; // default 0
 @property (nonatomic, getter=isScrollingAnimation) BOOL scrollingAnimation;
+@property (nonatomic) CGPoint beginDraggingPoint;
 @end
 
 @implementation HNWGuidePageViewController
 
-+ (HNWGuidePageViewController *)controllerWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages {
++ (HNWGuidePageViewController *)controllerWithGuidePageImages:(NSArray<UIImage *> *)guidePageImages delegate:(id<HNWGuidePageViewControllerDelegate>)delegate {
     NSBundle *bundle = [NSBundle bundleForClass:[HNWGuidePageViewController class]];
     HNWGuidePageViewController *vc = [[HNWGuidePageViewController alloc] initWithNibName:@"HNWGuidePageViewController" bundle:bundle];
     if (guidePageImages && [guidePageImages isKindOfClass:[NSArray class]]) {
@@ -41,16 +57,8 @@
     } else {
         vc.guidePageImages = nil;
     }
+    vc.delegate = delegate;
     return vc;
-}
-
-- (void)scrollToGuidePageAtIndex:(NSInteger)index {
-    if (index < self.guidePageImages.count) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
-        [self.collectionView scrollToItemAtIndexPath:indexPath
-                                    atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                            animated:YES];
-    }
 }
 
 - (void)viewDidLoad {
@@ -60,11 +68,11 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.view.backgroundColor = UIColor.clearColor;
     
-    self.skipButtonTop.constant = HNWDevice.sharedDevice.statusBarHeight + 7;
-    self.nextButtonBottom.constant = HNWDevice.sharedDevice.safeAreaBottomInset + 15;
+    self.skipButtonTop.constant = HNWDevice.statusBarHeight + 7;
+    self.nextButtonBottom.constant = HNWDevice.safeAreaBottomInset + 30;
     self.skipButton.layer.cornerRadius = 15;
     self.skipButton.layer.masksToBounds = YES;
-    self.nextButton.layer.cornerRadius = 21;
+    self.nextButton.layer.cornerRadius = 22;
     self.nextButton.layer.masksToBounds = YES;
     self.nextButton.layer.borderWidth = 1;
     self.nextButton.layer.borderColor = HNWColorWithRGBAHexInt(0x39BF3E).CGColor;
@@ -89,12 +97,14 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HNWGuidePageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HNWGuidePageCollectionViewCell" forIndexPath:indexPath];
-    cell.themeImageView.image = self.guidePageImages[indexPath.item];
+    if (indexPath.item < self.guidePageImages.count) {
+        cell.themeImageView.image = self.guidePageImages[indexPath.item];
+    }
     return cell;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    _beginDraggingPoint = [scrollView.panGestureRecognizer locationInView:self.view];
+    self.beginDraggingPoint = [scrollView.panGestureRecognizer locationInView:self.view];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -104,7 +114,7 @@
     } else {
         [self refreshPageIndex];
         if (endDraggingPoint.x < _beginDraggingPoint.x && self.currentPageIndex == self.guidePageImages.count-1) {
-            [self tellsDelegateDidFinishGuiding];
+            [self tellsDelegateDidFinishGuidingWithOptions:@{@"event":@"scroll"}];
         }
     }
 }
@@ -121,7 +131,7 @@
 
 #pragma mark - Actions
 - (IBAction)skipButtonDidClicked:(UIButton *)sender {
-    [self tellsDelegateDidFinishGuiding];
+    [self tellsDelegateDidFinishGuidingWithOptions:@{@"event":@"skip"}];
 }
 
 - (IBAction)nextButtonDidClicked:(UIButton *)sender {
@@ -134,7 +144,7 @@
         self.scrollingAnimation = YES;
         [self scrollToGuidePageAtIndex:self.currentPageIndex+1];
     } else {
-        [self tellsDelegateDidFinishGuiding];
+        [self tellsDelegateDidFinishGuidingWithOptions:@{@"event":@"next"}];
     }
 }
 
@@ -148,30 +158,19 @@
     }
 }
 
-- (void)tellsDelegateDidFinishGuiding {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(guidePageViewController:didFinishGuidingWithOptions:)]) {
-        [self.delegate guidePageViewController:self didFinishGuidingWithOptions:@{}];
+- (void)scrollToGuidePageAtIndex:(NSInteger)index {
+    if (index < self.guidePageImages.count) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        [self.collectionView scrollToItemAtIndexPath:indexPath
+                                    atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                            animated:YES];
     }
 }
 
-@end
-
-
-
-@implementation HNWGuidePageCollectionViewCell
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = UIColor.clearColor;
-        _themeImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _themeImageView.contentMode = UIViewContentModeScaleToFill;
-        _themeImageView.backgroundColor = UIColor.clearColor;
-        _themeImageView.clipsToBounds = YES;
-        _themeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        [self.contentView addSubview:_themeImageView];
+- (void)tellsDelegateDidFinishGuidingWithOptions:(NSDictionary *)guidingOptions {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(guidePageViewController:didFinishGuidingWithOptions:)]) {
+        [self.delegate guidePageViewController:self didFinishGuidingWithOptions:guidingOptions];
     }
-    return self;
 }
 
 @end

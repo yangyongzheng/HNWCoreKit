@@ -28,15 +28,6 @@
 #define HNWKitStrongReferenceKey(k) HNWKitTokenConcatenation(k, StrongRef)
 #endif
 
-/** 主屏幕宽/高 */
-#ifndef HNWKIT_SCREEN_WIDTH
-#define HNWKIT_SCREEN_WIDTH UIScreen.mainScreen.bounds.size.width
-#endif
-
-#ifndef HNWKIT_SCREEN_HEIGHT
-#define HNWKIT_SCREEN_HEIGHT UIScreen.mainScreen.bounds.size.height
-#endif
-
 /** 待定 */
 
 #endif /* HNWKitMacros_h */

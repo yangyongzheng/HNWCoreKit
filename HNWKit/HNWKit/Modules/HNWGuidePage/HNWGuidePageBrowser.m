@@ -10,7 +10,7 @@
 
 @interface HNWGuidePageBrowser () <HNWGuidePageViewControllerDelegate>
 @property (nonatomic, readwrite, strong) UIWindow *window;
-@property (nonatomic, strong) HNWGuidePageViewController *guidePageViewController;
+@property (nonatomic, readwrite, strong) HNWGuidePageViewController *guidePageViewController;
 @property (nonatomic, copy) dispatch_block_t completionHandler;
 @end
 
@@ -21,13 +21,23 @@
     browser.completionHandler = completionHandler;
     browser.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     browser.window.windowLevel = UIWindowLevelStatusBar + 50;
-    browser.window.backgroundColor = UIColor.clearColor;
-    HNWGuidePageViewController *viewController = [HNWGuidePageViewController controllerWithGuidePageImages:guidePageImages];
-    viewController.delegate = browser;
+    browser.window.backgroundColor = UIColor.whiteColor;
+    HNWGuidePageViewController *viewController = [HNWGuidePageViewController controllerWithGuidePageImages:guidePageImages delegate:browser];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     browser.window.rootViewController = navigationController;
+    navigationController.view.backgroundColor = UIColor.clearColor;
+    [navigationController setNavigationBarHidden:YES animated:NO];
+    viewController.view.backgroundColor = UIColor.clearColor;
     [browser.window makeKeyAndVisible];
     return browser;
+}
+
+- (void)dealloc {
+    if (self.window) {
+        [self.window resignKeyWindow];
+        self.window.hidden = YES;
+        self.window = nil;
+    }
 }
 
 #pragma mark - HNWGuidePageViewControllerDelegate

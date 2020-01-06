@@ -27,11 +27,12 @@
     self.guidePageBrowser = [HNWGuidePageBrowser browserWithGuidePageImages:@[image , image2, image3] completionHandler:^{
         HNWKitStrongTransfer(self);
         selfStrongRef.guidePageBrowser = nil;
+        [selfStrongRef didFinishGuidingHandler];
     }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    AMPTestViewController *vc = [[AMPTestViewController alloc] init];
+- (void)didFinishGuidingHandler {
+    
 }
 
 @end

@@ -29,8 +29,6 @@
 		CE2E42AB23B78AA50064025B /* NSData+HNWGZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */; };
 		CE2E42B223B792540064025B /* HNWDateManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2E42B023B792540064025B /* HNWDateManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE2E42B323B792540064025B /* HNWDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2E42B123B792540064025B /* HNWDateManager.m */; };
-		CE67654523C1B6F70094793D /* HNWAlertBoxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CE67654323C1B6F70094793D /* HNWAlertBoxViewController.h */; };
-		CE67654623C1B6F70094793D /* HNWAlertBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE67654423C1B6F70094793D /* HNWAlertBoxViewController.m */; };
 		CE67654923C1B7140094793D /* HNWAlertViewBox.h in Headers */ = {isa = PBXBuildFile; fileRef = CE67654723C1B7140094793D /* HNWAlertViewBox.h */; };
 		CE67654A23C1B7140094793D /* HNWAlertViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = CE67654823C1B7140094793D /* HNWAlertViewBox.m */; };
 		CE67654D23C1BC7F0094793D /* HNWGuidePageBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = CE67654B23C1BC7F0094793D /* HNWGuidePageBrowser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,8 +104,6 @@
 		CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+HNWGZIP.m"; sourceTree = "<group>"; };
 		CE2E42B023B792540064025B /* HNWDateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWDateManager.h; sourceTree = "<group>"; };
 		CE2E42B123B792540064025B /* HNWDateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWDateManager.m; sourceTree = "<group>"; };
-		CE67654323C1B6F70094793D /* HNWAlertBoxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAlertBoxViewController.h; sourceTree = "<group>"; };
-		CE67654423C1B6F70094793D /* HNWAlertBoxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAlertBoxViewController.m; sourceTree = "<group>"; };
 		CE67654723C1B7140094793D /* HNWAlertViewBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAlertViewBox.h; sourceTree = "<group>"; };
 		CE67654823C1B7140094793D /* HNWAlertViewBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAlertViewBox.m; sourceTree = "<group>"; };
 		CE67654B23C1BC7F0094793D /* HNWGuidePageBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWGuidePageBrowser.h; sourceTree = "<group>"; };
@@ -172,6 +168,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE644CD123C367D9008BD89F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE6BFFE723B2347A0049BDF2 /* HNWAssertNotEmpty.h */,
+				CE6BFFE823B2347A0049BDF2 /* HNWAssertNotEmpty.m */,
+				CE1F890423B8BCDF00FC7126 /* HNWDevice.h */,
+				CE1F890523B8BCDF00FC7126 /* HNWDevice.m */,
+				CE6BFFE323B231820049BDF2 /* HNWKitDefines.h */,
+				CE6BFFEF23B257940049BDF2 /* HNWKitMacros.h */,
+				CE1B90ED23BB5F810005265E /* UIColor+HNWKit.h */,
+				CE1B90EE23BB5F810005265E /* UIColor+HNWKit.m */,
+				CE1B90F523BB61630005265E /* UIView+HNWKit.h */,
+				CE1B90F623BB61630005265E /* UIView+HNWKit.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CE644CD223C368DE008BD89F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CE2E42A823B78AA50064025B /* NSData+HNWGZIP.h */,
+				CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */,
+				CE1B90E923BB5F290005265E /* NSString+HNWKit.h */,
+				CE1B90EA23BB5F290005265E /* NSString+HNWKit.m */,
+				CE1B90F123BB608D0005265E /* UIAlertController+HNWKit.h */,
+				CE1B90F223BB608D0005265E /* UIAlertController+HNWKit.m */,
+				CE67655323C1C7720094793D /* UIImage+HNWKit.h */,
+				CE67655423C1C7720094793D /* UIImage+HNWKit.m */,
+				CE1B90FD23BB7A320005265E /* UIView+HNWNibLoading.h */,
+				CE1B90FE23BB7A320005265E /* UIView+HNWNibLoading.m */,
+				CE1B90F923BB75D90005265E /* UIViewController+HNWNibLoading.h */,
+				CE1B90FA23BB75D90005265E /* UIViewController+HNWNibLoading.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CE644CD323C369A6008BD89F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CE7FB58723BE18A3009F18C4 /* HNWAlertDispatcher.h */,
+				CE7FB58823BE18A3009F18C4 /* HNWAlertDispatcher.m */,
+				CE67654723C1B7140094793D /* HNWAlertViewBox.h */,
+				CE67654823C1B7140094793D /* HNWAlertViewBox.m */,
+				CE83D90023BC7A57001F7138 /* HNWAlertWrapperController.h */,
+				CE83D90123BC7A57001F7138 /* HNWAlertWrapperController.m */,
+				CE779ED923B72F3F00B85822 /* HNWAppMonitor.h */,
+				CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */,
+				CE2E42B023B792540064025B /* HNWDateManager.h */,
+				CE2E42B123B792540064025B /* HNWDateManager.m */,
+				CE83D90423BC7AA8001F7138 /* HNWFormSheetWrapperController.h */,
+				CE83D90523BC7AA8001F7138 /* HNWFormSheetWrapperController.m */,
+				CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */,
+				CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */,
+				CE6DC0A523B38E62006FE9EB /* HNWLayoutConstraintConstructor.h */,
+				CE6DC09F23B38E62006FE9EB /* HNWLayoutConstraintConstructor.m */,
+				CE028D8523B87EA900EFD1A5 /* HNWPathManager.h */,
+				CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */,
+				CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */,
+				CE028D8A23B887E400EFD1A5 /* HNWPhotoManager.m */,
+				CE70277623B4D46E002CB592 /* HNWWeakTimer.h */,
+				CE70277723B4D46E002CB592 /* HNWWeakTimer.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		CE644CD423C36DC8008BD89F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CEBBE63123C376DC00442306 /* HNWGuidePage */,
+				CE6DC09B23B38E62006FE9EB /* HNWTabMenuView */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		CE6BFFBB23B2300D0049BDF2 = {
 			isa = PBXGroup;
 			children = (
@@ -194,59 +264,11 @@
 			isa = PBXGroup;
 			children = (
 				CE6BFFC823B2300D0049BDF2 /* HNWKit.h */,
-				CE6BFFE323B231820049BDF2 /* HNWKitDefines.h */,
-				CE6BFFEF23B257940049BDF2 /* HNWKitMacros.h */,
-				CE6BFFE723B2347A0049BDF2 /* HNWAssertNotEmpty.h */,
-				CE6BFFE823B2347A0049BDF2 /* HNWAssertNotEmpty.m */,
-				CE6DC0A523B38E62006FE9EB /* HNWLayoutConstraintConstructor.h */,
-				CE6DC09F23B38E62006FE9EB /* HNWLayoutConstraintConstructor.m */,
-				CE70277623B4D46E002CB592 /* HNWWeakTimer.h */,
-				CE70277723B4D46E002CB592 /* HNWWeakTimer.m */,
-				CE2E42B023B792540064025B /* HNWDateManager.h */,
-				CE2E42B123B792540064025B /* HNWDateManager.m */,
-				CE028D8523B87EA900EFD1A5 /* HNWPathManager.h */,
-				CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */,
-				CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */,
-				CE028D8A23B887E400EFD1A5 /* HNWPhotoManager.m */,
-				CE779ED923B72F3F00B85822 /* HNWAppMonitor.h */,
-				CE779EDA23B72F3F00B85822 /* HNWAppMonitor.m */,
-				CE779EDD23B7440B00B85822 /* HNWKeyboardMonitor.h */,
-				CE779EDE23B7440B00B85822 /* HNWKeyboardMonitor.m */,
-				CE1F890423B8BCDF00FC7126 /* HNWDevice.h */,
-				CE1F890523B8BCDF00FC7126 /* HNWDevice.m */,
-				CE67654B23C1BC7F0094793D /* HNWGuidePageBrowser.h */,
-				CE67654C23C1BC7F0094793D /* HNWGuidePageBrowser.m */,
-				CE67655723C1CE390094793D /* HNWGuidePageViewController.h */,
-				CE67655823C1CE390094793D /* HNWGuidePageViewController.m */,
-				CE67655923C1CE390094793D /* HNWGuidePageViewController.xib */,
-				CE7FB58723BE18A3009F18C4 /* HNWAlertDispatcher.h */,
-				CE7FB58823BE18A3009F18C4 /* HNWAlertDispatcher.m */,
-				CE67654323C1B6F70094793D /* HNWAlertBoxViewController.h */,
-				CE67654423C1B6F70094793D /* HNWAlertBoxViewController.m */,
-				CE67654723C1B7140094793D /* HNWAlertViewBox.h */,
-				CE67654823C1B7140094793D /* HNWAlertViewBox.m */,
-				CE83D90023BC7A57001F7138 /* HNWAlertWrapperController.h */,
-				CE83D90123BC7A57001F7138 /* HNWAlertWrapperController.m */,
-				CE83D90423BC7AA8001F7138 /* HNWFormSheetWrapperController.h */,
-				CE83D90523BC7AA8001F7138 /* HNWFormSheetWrapperController.m */,
-				CE6DC09B23B38E62006FE9EB /* HNWTabMenuView */,
+				CE644CD223C368DE008BD89F /* Category */,
+				CE644CD123C367D9008BD89F /* Common */,
+				CE644CD423C36DC8008BD89F /* Modules */,
+				CE644CD323C369A6008BD89F /* Utility */,
 				CE6BFFC923B2300E0049BDF2 /* Info.plist */,
-				CE1B90ED23BB5F810005265E /* UIColor+HNWKit.h */,
-				CE1B90EE23BB5F810005265E /* UIColor+HNWKit.m */,
-				CE67655323C1C7720094793D /* UIImage+HNWKit.h */,
-				CE67655423C1C7720094793D /* UIImage+HNWKit.m */,
-				CE2E42A823B78AA50064025B /* NSData+HNWGZIP.h */,
-				CE2E42A923B78AA50064025B /* NSData+HNWGZIP.m */,
-				CE1B90E923BB5F290005265E /* NSString+HNWKit.h */,
-				CE1B90EA23BB5F290005265E /* NSString+HNWKit.m */,
-				CE1B90F123BB608D0005265E /* UIAlertController+HNWKit.h */,
-				CE1B90F223BB608D0005265E /* UIAlertController+HNWKit.m */,
-				CE1B90F523BB61630005265E /* UIView+HNWKit.h */,
-				CE1B90F623BB61630005265E /* UIView+HNWKit.m */,
-				CE1B90FD23BB7A320005265E /* UIView+HNWNibLoading.h */,
-				CE1B90FE23BB7A320005265E /* UIView+HNWNibLoading.m */,
-				CE1B90F923BB75D90005265E /* UIViewController+HNWNibLoading.h */,
-				CE1B90FA23BB75D90005265E /* UIViewController+HNWNibLoading.m */,
 			);
 			path = HNWKit;
 			sourceTree = "<group>";
@@ -277,6 +299,18 @@
 			path = HNWTabMenuView;
 			sourceTree = "<group>";
 		};
+		CEBBE63123C376DC00442306 /* HNWGuidePage */ = {
+			isa = PBXGroup;
+			children = (
+				CE67654B23C1BC7F0094793D /* HNWGuidePageBrowser.h */,
+				CE67654C23C1BC7F0094793D /* HNWGuidePageBrowser.m */,
+				CE67655723C1CE390094793D /* HNWGuidePageViewController.h */,
+				CE67655823C1CE390094793D /* HNWGuidePageViewController.m */,
+				CE67655923C1CE390094793D /* HNWGuidePageViewController.xib */,
+			);
+			path = HNWGuidePage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -297,7 +331,6 @@
 				CE1B90F323BB608D0005265E /* UIAlertController+HNWKit.h in Headers */,
 				CE67654D23C1BC7F0094793D /* HNWGuidePageBrowser.h in Headers */,
 				CE6BFFE923B2347A0049BDF2 /* HNWAssertNotEmpty.h in Headers */,
-				CE67654523C1B6F70094793D /* HNWAlertBoxViewController.h in Headers */,
 				CE6DC0AC23B38E62006FE9EB /* HNWTabMenuViewItem.h in Headers */,
 				CE70277823B4D46E002CB592 /* HNWWeakTimer.h in Headers */,
 				CE1B90F723BB61630005265E /* UIView+HNWKit.h in Headers */,
@@ -439,7 +472,6 @@
 				CE67654E23C1BC7F0094793D /* HNWGuidePageBrowser.m in Sources */,
 				CE6DC0B223B38E62006FE9EB /* HNWTabMenuViewItem.m in Sources */,
 				CE7FB58A23BE18A3009F18C4 /* HNWAlertDispatcher.m in Sources */,
-				CE67654623C1B6F70094793D /* HNWAlertBoxViewController.m in Sources */,
 				CE028D8C23B887E400EFD1A5 /* HNWPhotoManager.m in Sources */,
 				CE1B90FC23BB75D90005265E /* UIViewController+HNWNibLoading.m in Sources */,
 				CE67654A23C1B7140094793D /* HNWAlertViewBox.m in Sources */,
