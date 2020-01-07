@@ -14,7 +14,7 @@ static NSString * HNWPrivateDirectoryAppendSubdirectory(NSString *directory, NSS
     NSString *fullPath = [directory stringByAppendingPathComponent:subdirectory];
     BOOL isDirectory = NO;
     BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:fullPath isDirectory:&isDirectory];
-    if (isExists && isDirectory) {/** Do nothing */} else {
+    if (isExists && isDirectory) {/* Do nothing */} else {
         [NSFileManager.defaultManager createDirectoryAtPath:fullPath
                                 withIntermediateDirectories:YES
                                                  attributes:nil

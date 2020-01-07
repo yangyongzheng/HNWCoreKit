@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HNWPhotoMediaItem : NSObject
+@interface HNWPhotoItem : NSObject
 /** 图片/视频文件URL */
 @property (nonatomic, readonly, copy) NSURL *fileURL;
 /** 是否是视频文件 */
-@property (nonatomic, readonly, getter=isVideoType) BOOL videoType;
+@property (nonatomic, readonly, getter=isVideoFlag) BOOL videoFlag;
 
-+ (instancetype)itemWithFileURL:(NSURL *)fileURL videoType:(BOOL)videoType;
++ (instancetype)itemWithFileURL:(NSURL *)fileURL videoFlag:(BOOL)isVideoFlag;
 @end
 
 
@@ -32,13 +32,9 @@ NS_CLASS_AVAILABLE_IOS(8_0) @interface HNWPhotoManager : NSObject
 
 @property (class, readonly, strong) HNWPhotoManager *sharedManager;
 
-- (void)requestSaveImages:(NSArray<UIImage *> *)images
-             successBlock:(void (^)(void))successBlock
-             failureBlock:(void (^)(NSError *error))failureBlock;
+- (void)requestSaveImages:(NSArray<UIImage *> *)images completionHandler:(void (^)(NSError * _Nullable aError))completionHandler;
 
-- (void)requestSaveMediaItems:(NSArray<HNWPhotoMediaItem *> *)mediaItems
-                 successBlock:(void (^)(void))successBlock
-                 failureBlock:(void (^)(NSError *error))failureBlock;
+- (void)requestSavePhotoItems:(NSArray<HNWPhotoItem *> *)photoItems completionHandler:(void (^)(NSError * _Nullable aError))completionHandler;
 
 @end
 

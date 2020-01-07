@@ -26,10 +26,10 @@
 + (instancetype)hnw_viewWithNibName:(NSString *)nibName bundle:(NSBundle *)bundleOrNil index:(NSInteger)index {
     id findObject = nil;
     
-    if (nibName && [nibName isKindOfClass:[NSString class]] && nibName.length > 0) {/** Do nothing */} else {
+    if (nibName && [nibName isKindOfClass:[NSString class]] && nibName.length > 0) {/* Do nothing */} else {
         nibName = NSStringFromClass([self class]);
     }
-    if (bundleOrNil && [bundleOrNil isKindOfClass:[NSBundle class]]) {/** Do nothing */} else {
+    if (bundleOrNil && [bundleOrNil isKindOfClass:[NSBundle class]]) {/* Do nothing */} else {
         bundleOrNil = NSBundle.mainBundle;
     }
     UINib *nib = [UINib nibWithNibName:nibName bundle:bundleOrNil];

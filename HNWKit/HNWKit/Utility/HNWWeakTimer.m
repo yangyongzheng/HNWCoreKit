@@ -26,24 +26,24 @@
 
 #pragma mark - Lifecycle
 - (void)dealloc {
-    [self invalidate];
+    [self invalidateTimer];
 }
 
 #pragma mark - Public
-- (void)scheduledWithTimeInterval:(long)interval
-                          repeats:(BOOL)repeats
-                            block:(void (^)(HNWWeakTimer * _Nonnull))block {
-    [self scheduledWithTimeInterval:interval
-                            repeats:repeats
-                               mode:NSRunLoopCommonModes
-                              block:block];
+- (void)scheduledTimerWithTimeInterval:(long)interval
+                               repeats:(BOOL)repeats
+                                 block:(void (^)(HNWWeakTimer * _Nonnull))block {
+    [self scheduledTimerWithTimeInterval:interval
+                                 repeats:repeats
+                                    mode:NSRunLoopCommonModes
+                                   block:block];
 }
 
-- (void)scheduledWithTimeInterval:(long)interval
-                          repeats:(BOOL)repeats
-                             mode:(NSRunLoopMode)mode
-                            block:(void (^)(HNWWeakTimer * _Nonnull))block {
-    [self invalidate];
+- (void)scheduledTimerWithTimeInterval:(long)interval
+                               repeats:(BOOL)repeats
+                                  mode:(NSRunLoopMode)mode
+                                 block:(void (^)(HNWWeakTimer * _Nonnull))block {
+    [self invalidateTimer];
     if (interval <= 0) {interval = 1;}
     if (block) {
         NSTimeInterval newInterval = [self convertIntervalWithMilliseconds:interval];
@@ -53,27 +53,27 @@
             if (selfStrongRef) {
                 block(selfStrongRef);
                 if (!repeats) {
-                    [selfStrongRef invalidate];
+                    [selfStrongRef invalidateTimer];
                 }
             }
         }];
     }
 }
 
-- (void)scheduledWithCountdown:(long)countdown
-                      interval:(long)interval
-                         block:(void (^)(HNWWeakTimer * _Nonnull, long))block {
-    [self scheduledWithCountdown:countdown
-                        interval:interval
-                            mode:NSRunLoopCommonModes
-                           block:block];
+- (void)scheduledTimerWithCountdown:(long)countdown
+                           interval:(long)interval
+                              block:(void (^)(HNWWeakTimer * _Nonnull, long))block {
+    [self scheduledTimerWithCountdown:countdown
+                             interval:interval
+                                 mode:NSRunLoopCommonModes
+                                block:block];
 }
 
-- (void)scheduledWithCountdown:(long)countdown
-                      interval:(long)interval
-                          mode:(NSRunLoopMode)mode
-                         block:(void (^)(HNWWeakTimer * _Nonnull, long))block {
-    [self invalidate];
+- (void)scheduledTimerWithCountdown:(long)countdown
+                           interval:(long)interval
+                               mode:(NSRunLoopMode)mode
+                              block:(void (^)(HNWWeakTimer * _Nonnull, long))block {
+    [self invalidateTimer];
     if (interval > 0 && countdown >= interval && block) {
         self.currentCountdown = countdown;
         NSTimeInterval newInterval = [self convertIntervalWithMilliseconds:interval];
@@ -84,7 +84,7 @@
                 selfStrongRef.currentCountdown -= interval;
                 if (selfStrongRef.currentCountdown <= 0) {
                     selfStrongRef.currentCountdown = 0;
-                    [selfStrongRef invalidate];
+                    [selfStrongRef invalidateTimer];
                 }
                 block(selfStrongRef, selfStrongRef.currentCountdown);
             }
@@ -92,13 +92,13 @@
     }
 }
 
-- (void)fire {
+- (void)fireTimer {
     if (self.hnwTimer) {
         [self.hnwTimer fire];
     }
 }
 
-- (void)invalidate {
+- (void)invalidateTimer {
     if (self.hnwTimer) {
         [self.hnwTimer invalidate];
         self.hnwTimer = nil;

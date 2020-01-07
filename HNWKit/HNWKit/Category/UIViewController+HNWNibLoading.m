@@ -34,13 +34,13 @@ static NSString * const HNWKitMainStoryboardName = @"Main";
 }
 
 + (instancetype)hnw_instantiateWithStoryboardName:(NSString *)storyboardName identifier:(NSString *)identifier bundle:(NSBundle *)bundle {
-    if (storyboardName && [storyboardName isKindOfClass:[NSString class]] && storyboardName.length > 0) {/** Do nothing */} else {
+    if (storyboardName && [storyboardName isKindOfClass:[NSString class]] && storyboardName.length > 0) {/* Do nothing */} else {
         storyboardName = HNWKitMainStoryboardName;
     }
-    if (identifier && [identifier isKindOfClass:[NSString class]] && identifier.length > 0) {/** Do nothing */} else {
+    if (identifier && [identifier isKindOfClass:[NSString class]] && identifier.length > 0) {/* Do nothing */} else {
         identifier = NSStringFromClass([self class]);
     }
-    if (bundle && [bundle isKindOfClass:[NSBundle class]]) {/** Do nothing */} else {
+    if (bundle && [bundle isKindOfClass:[NSBundle class]]) {/* Do nothing */} else {
         bundle = NSBundle.mainBundle;
     }
     UIStoryboard *sb = [UIStoryboard storyboardWithName:storyboardName bundle:bundle];

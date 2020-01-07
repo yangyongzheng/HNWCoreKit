@@ -19,10 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param repeats 是否重复触发
  @param block 定时器触发回调，注意Block循环引用
  */
-- (void)scheduledWithTimeInterval:(long)interval
-                          repeats:(BOOL)repeats
-                            block:(void (^)(HNWWeakTimer *timerHolder))block;
-
+- (void)scheduledTimerWithTimeInterval:(long)interval
+                               repeats:(BOOL)repeats
+                                 block:(void (^)(HNWWeakTimer *timerHolder))block;
 /**
  开启定时器
  
@@ -31,10 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param mode 运行循环模式，默认 NSRunLoopCommonModes
  @param block 定时器触发回调，注意Block循环引用
  */
-- (void)scheduledWithTimeInterval:(long)interval
-                          repeats:(BOOL)repeats
-                             mode:(NSRunLoopMode)mode
-                            block:(void (^)(HNWWeakTimer *timerHolder))block;
+- (void)scheduledTimerWithTimeInterval:(long)interval
+                               repeats:(BOOL)repeats
+                                  mode:(NSRunLoopMode)mode
+                                 block:(void (^)(HNWWeakTimer *timerHolder))block;
 
 /**
  开启倒计时定时器，当 countdown >= interval > 0 时才能开启成功。
@@ -43,9 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param interval 定时器触发间隔时间，单位毫秒
  @param block 定时器触发回调，注意Block循环引用
  */
-- (void)scheduledWithCountdown:(long)countdown
-                      interval:(long)interval
-                         block:(void (^)(HNWWeakTimer *timerHolder, long currentCountdown))block;
+- (void)scheduledTimerWithCountdown:(long)countdown
+                           interval:(long)interval
+                              block:(void (^)(HNWWeakTimer *timerHolder, long currentCountdown))block;
 
 /**
  开启倒计时定时器，当 countdown >= interval > 0 时才能开启成功。
@@ -55,16 +54,16 @@ NS_ASSUME_NONNULL_BEGIN
  @param mode 运行循环模式，默认 NSRunLoopCommonModes
  @param block 定时器触发回调，注意Block循环引用
  */
-- (void)scheduledWithCountdown:(long)countdown
-                      interval:(long)interval
-                          mode:(NSRunLoopMode)mode
-                         block:(void (^)(HNWWeakTimer *timerHolder, long currentCountdown))block;
+- (void)scheduledTimerWithCountdown:(long)countdown
+                           interval:(long)interval
+                               mode:(NSRunLoopMode)mode
+                              block:(void (^)(HNWWeakTimer *timerHolder, long currentCountdown))block;
 
 /** 立即触发一次定时器 */
-- (void)fire;
+- (void)fireTimer;
 
 /** 销毁定时器 */
-- (void)invalidate;
+- (void)invalidateTimer;
 
 /** 定时器是否有效 */
 @property (nonatomic, readonly, getter=isValid) BOOL valid;

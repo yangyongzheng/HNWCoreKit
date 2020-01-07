@@ -146,7 +146,7 @@
 - (void)reloadDataScopeAll {
     if ([self constructDataSource]) {
         // 标题项发生改变时，判断是否重置选中项，同步通知代理
-        if ([self validateItemIndex:self.selectedItemIndex]) {/** Do nothing */} else {
+        if ([self validateItemIndex:self.selectedItemIndex]) {/* Do nothing */} else {
             self.selectedItemIndex = 0;
         }
         [self tellsDelegateWithUserTrigger:NO];

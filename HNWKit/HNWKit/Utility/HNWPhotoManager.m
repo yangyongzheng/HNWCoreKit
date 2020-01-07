@@ -9,12 +9,12 @@
 #import "HNWPhotoManager.h"
 #import <Photos/Photos.h>
 
-@implementation HNWPhotoMediaItem
+@implementation HNWPhotoItem
 
-+ (instancetype)itemWithFileURL:(NSURL *)fileURL videoType:(BOOL)videoType {
-    HNWPhotoMediaItem *item = [[[self class] alloc] init];
++ (instancetype)itemWithFileURL:(NSURL *)fileURL videoFlag:(BOOL)isVideoFlag {
+    HNWPhotoItem *item = [[[self class] alloc] init];
     item->_fileURL = fileURL;
-    item->_videoType = videoType;
+    item->_videoFlag = isVideoFlag;
     return item;
 }
 
@@ -25,10 +25,9 @@
 const NSInteger HNWPhotoAccessRestrictedErrorCode = -100000;
 const NSInteger HNWPhotoSaveParameterInvalidErrorCode = -100001;
 
+static const NSInteger HNWPhotoSaveFailedErrorCode = -100002;
 
 @implementation HNWPhotoManager
-
-static const NSInteger HNWPhotoSaveFailedErrorCode = -100002;
 
 static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
     if (block) {
@@ -50,34 +49,30 @@ static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
     return manager;
 }
 
-- (void)requestSaveImages:(NSArray<UIImage *> *)images
-             successBlock:(void (^)(void))successBlock
-             failureBlock:(void (^)(NSError * _Nonnull))failureBlock {
+- (void)requestSaveImages:(NSArray<UIImage *> *)images completionHandler:(void (^)(NSError * _Nullable))completionHandler {
     [HNWPhotoManager precheckBeforeSave:^(BOOL granted) {
         if (granted) {
             if (images && [images isKindOfClass:[NSArray class]]) {
-                [self hnw_saveImages:images successBlock:successBlock failureBlock:failureBlock];
+                [self hnw_saveImages:images completionHandler:completionHandler];
             } else {
-                if (failureBlock) {failureBlock([self hnw_privateErrorWithCode:HNWPhotoSaveParameterInvalidErrorCode]);}
+                if (completionHandler) {completionHandler([self hnw_privateErrorWithCode:HNWPhotoSaveParameterInvalidErrorCode]);}
             }
         } else {
-            if (failureBlock) {failureBlock([self hnw_privateErrorWithCode:HNWPhotoAccessRestrictedErrorCode]);}
+            if (completionHandler) {completionHandler([self hnw_privateErrorWithCode:HNWPhotoAccessRestrictedErrorCode]);}
         }
     }];
 }
 
-- (void)requestSaveMediaItems:(NSArray<HNWPhotoMediaItem *> *)mediaItems
-                 successBlock:(void (^)(void))successBlock
-                 failureBlock:(void (^)(NSError * _Nonnull))failureBlock {
+- (void)requestSavePhotoItems:(NSArray<HNWPhotoItem *> *)photoItems completionHandler:(void (^)(NSError * _Nullable))completionHandler {
     [HNWPhotoManager precheckBeforeSave:^(BOOL granted) {
         if (granted) {
-            if (mediaItems && [mediaItems isKindOfClass:[NSArray class]]) {
-                [self hnw_saveMediaItems:mediaItems successBlock:successBlock failureBlock:failureBlock];
+            if (photoItems && [photoItems isKindOfClass:[NSArray class]]) {
+                [self hnw_savePhotoItems:photoItems completionHandler:completionHandler];
             } else {
-                if (failureBlock) {failureBlock([self hnw_privateErrorWithCode:HNWPhotoSaveParameterInvalidErrorCode]);}
+                if (completionHandler) {completionHandler([self hnw_privateErrorWithCode:HNWPhotoSaveParameterInvalidErrorCode]);}
             }
         } else {
-            if (failureBlock) {failureBlock([self hnw_privateErrorWithCode:HNWPhotoAccessRestrictedErrorCode]);}
+            if (completionHandler) {completionHandler([self hnw_privateErrorWithCode:HNWPhotoAccessRestrictedErrorCode]);}
         }
     }];
 }
@@ -91,9 +86,7 @@ static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
     }];
 }
 
-- (void)hnw_saveImages:(NSArray<UIImage *> *)images
-          successBlock:(void (^)(void))successBlock
-          failureBlock:(void (^)(NSError * _Nonnull))failureBlock {
+- (void)hnw_saveImages:(NSArray<UIImage *> *)images completionHandler:(void (^)(NSError * _Nullable))completionHandler {
     if (images.count > 0) {
         __block NSArray *safeImages = [images copy];
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
@@ -107,27 +100,25 @@ static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
         } completionHandler:^(BOOL success, NSError * _Nullable error) {
             HNWPrivateSafeSyncMainQueue(^{
                 if (success) {
-                    if (successBlock) {successBlock();}
+                    if (completionHandler) {completionHandler(nil);}
                 } else {
-                    if (failureBlock) {failureBlock(error?:[self hnw_privateErrorWithCode:HNWPhotoSaveFailedErrorCode]);}
+                    if (completionHandler) {completionHandler(error?:[self hnw_privateErrorWithCode:HNWPhotoSaveFailedErrorCode]);}
                 }
             });
         }];
     } else {
-        if (successBlock) {successBlock();}
+        if (completionHandler) {completionHandler(nil);}
     }
 }
 
-- (void)hnw_saveMediaItems:(NSArray<HNWPhotoMediaItem *> *)mediaItems
-              successBlock:(void (^)(void))successBlock
-              failureBlock:(void (^)(NSError * _Nonnull))failureBlock {
-    if (mediaItems.count > 0) {
-        __block NSArray *safeMediaItems = [mediaItems copy];
+- (void)hnw_savePhotoItems:(NSArray<HNWPhotoItem *> *)photoItems completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+    if (photoItems.count > 0) {
+        __block NSArray *safePhotoItems = [photoItems copy];
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-            for (HNWPhotoMediaItem *item in safeMediaItems) {
-                if (item && [item isKindOfClass:[HNWPhotoMediaItem class]] &&
+            for (HNWPhotoItem *item in safePhotoItems) {
+                if (item && [item isKindOfClass:[HNWPhotoItem class]] &&
                     item.fileURL && [item.fileURL isKindOfClass:[NSURL class]]) {
-                    if (item.isVideoType) {
+                    if (item.isVideoFlag) {
                         [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:item.fileURL];
                     } else {
                         [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:item.fileURL];
@@ -139,14 +130,14 @@ static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
         } completionHandler:^(BOOL success, NSError * _Nullable error) {
             HNWPrivateSafeSyncMainQueue(^{
                 if (success) {
-                    if (successBlock) {successBlock();}
+                    if (completionHandler) {completionHandler(nil);}
                 } else {
-                    if (failureBlock) {failureBlock(error?:[self hnw_privateErrorWithCode:HNWPhotoSaveFailedErrorCode]);}
+                    if (completionHandler) {completionHandler(error?:[self hnw_privateErrorWithCode:HNWPhotoSaveFailedErrorCode]);}
                 }
             });
         }];
     } else {
-        if (successBlock) {successBlock();}
+        if (completionHandler) {completionHandler(nil);}
     }
 }
 
@@ -155,6 +146,10 @@ static void HNWPrivateSafeSyncMainQueue(dispatch_block_t block) {
         return [NSError errorWithDomain:@"照片(相册)访问权限受限"
                                    code:HNWPhotoAccessRestrictedErrorCode
                                userInfo:@{NSLocalizedDescriptionKey : @"照片(相册)访问权限受限"}];
+    } else if (errorCode == HNWPhotoSaveParameterInvalidErrorCode) {
+        return [NSError errorWithDomain:@"传入参数无效，保存到照片(相册)失败"
+                                   code:HNWPhotoSaveParameterInvalidErrorCode
+                               userInfo:@{NSLocalizedDescriptionKey : @"传入参数无效，保存到照片(相册)失败"}];
     } else {
         return [NSError errorWithDomain:@"保存失败"
                                    code:HNWPhotoSaveFailedErrorCode
