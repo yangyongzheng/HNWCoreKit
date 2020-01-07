@@ -1,29 +1,27 @@
 //
-//  HNWAlertWrapperController.m
+//  HNWAlertBoxController.m
 //  HNWKit
 //
-//  Created by Young on 2020/1/1.
+//  Created by Young on 2020/1/7.
 //  Copyright © 2020 Young. All rights reserved.
 //
 
-#import "HNWAlertWrapperController.h"
+#import "HNWAlertBoxController.h"
 #import <objc/runtime.h>
 
-@interface HNWAlertWrapperControllerTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface HNWAlertBoxControllerTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 + (instancetype)presentTransitionAnimator:(HNWAlertAnimationTransition)animationTransition;
 + (instancetype)dismissTransitionAnimator:(HNWAlertAnimationTransition)animationTransition;
 @end
 
 
-@interface HNWAlertWrapperController () <UIViewControllerTransitioningDelegate>
-@property (nonatomic, strong) UIView *backgroundShadowView;
-@property (nonatomic, strong) UIView *alertViewBox;
-@property (nonatomic, strong) UIView *alertView;
+@interface HNWAlertBoxController () <UIViewControllerTransitioningDelegate>
+@property (nonatomic, readwrite, strong) HNWAlertViewBox *alertViewBox;
 @property (nonatomic) HNWAlertAnimationTransition presentAnimationTransition;
 @property (nonatomic) HNWAlertAnimationTransition dismissAnimationTransition;
 @end
 
-@implementation HNWAlertWrapperController
+@implementation HNWAlertBoxController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,26 +30,26 @@
 }
 
 - (void)dealloc {
-    _alertView.alertWrapperController = nil;
+    self.alertViewBox.alertView.alertBoxController = nil;
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source {
-    return [HNWAlertWrapperControllerTransitionAnimator presentTransitionAnimator:self.presentAnimationTransition];
+    return [HNWAlertBoxControllerTransitionAnimator presentTransitionAnimator:self.presentAnimationTransition];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    return [HNWAlertWrapperControllerTransitionAnimator dismissTransitionAnimator:self.dismissAnimationTransition];
+    return [HNWAlertBoxControllerTransitionAnimator dismissTransitionAnimator:self.dismissAnimationTransition];
 }
 
 #pragma mark - Public
-+ (instancetype)wrapperControllerWithAlertView:(UIView *)alertView {
++ (instancetype)boxControllerWithAlertView:(UIView *)alertView {
     if (alertView && [alertView isKindOfClass:[UIView class]]) {
-        HNWAlertWrapperController *vc = [[[self class] alloc] init];
-        vc.alertView = alertView;
-        alertView.alertWrapperController = vc;
+        HNWAlertBoxController *vc = [[[self class] alloc] init];
+        alertView.alertBoxController = vc;
+        vc.alertViewBox = [[HNWAlertViewBox alloc] initWithFrame:CGRectMake(0, 0, 300, 300) alertView:alertView];
         return vc;
     } else {
         return nil;
@@ -82,70 +80,44 @@
 #pragma mark - Misc
 - (void)setupDefaultConfiguration {
     self.view.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.backgroundShadowView];
+    self.alertViewBox.frame = self.view.bounds;
+    self.alertViewBox.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.alertViewBox];
-    if (self.alertView) {
-        [self.alertViewBox addSubview:self.alertView];
-        self.alertView.center = CGPointMake(CGRectGetMidX(self.alertViewBox.bounds), CGRectGetMidY(self.alertViewBox.bounds));
-        self.alertView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-    }
-}
-
-#pragma mark - getter or setter
-- (UIView *)backgroundShadowView {
-    if (!_backgroundShadowView) {
-        _backgroundShadowView = [[UIView alloc] initWithFrame:self.view.bounds];
-        _backgroundShadowView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.6];
-        _backgroundShadowView.userInteractionEnabled = NO;
-        _backgroundShadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    }
-    return _backgroundShadowView;
-}
-
-- (UIView *)alertViewBox {
-    if (!_alertViewBox) {
-        _alertViewBox = [[UIView alloc] initWithFrame:self.view.bounds];
-        _alertViewBox.backgroundColor = [UIColor clearColor];
-        _alertViewBox.clipsToBounds = YES;
-        _alertViewBox.userInteractionEnabled = YES;
-        _alertViewBox.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    }
-    return _alertViewBox;
 }
 
 @end
 
 
 
-@interface HNWAlertWrapperControllerTransitionAnimator ()
+@interface HNWAlertBoxControllerTransitionAnimator ()
 @property (nonatomic) HNWAlertAnimationTransition animationTransition;
-@property (nonatomic, getter=isPresentTransitionAnimator) BOOL presentTransitionAnimator;
+@property (nonatomic, getter=isPresentFlag) BOOL presentFlag;
 @end
 
-@implementation HNWAlertWrapperControllerTransitionAnimator
+@implementation HNWAlertBoxControllerTransitionAnimator
 
-static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
+static const double HNWAlertBoxControllerTransitionDuration = 0.25;
 
 + (instancetype)presentTransitionAnimator:(HNWAlertAnimationTransition)animationTransition {
-    HNWAlertWrapperControllerTransitionAnimator *animator = [[[self class] alloc] init];
+    HNWAlertBoxControllerTransitionAnimator *animator = [[[self class] alloc] init];
     animator.animationTransition = animationTransition;
-    animator.presentTransitionAnimator = YES;
+    animator.presentFlag = YES;
     return animator;
 }
 
 + (instancetype)dismissTransitionAnimator:(HNWAlertAnimationTransition)animationTransition {
-    HNWAlertWrapperControllerTransitionAnimator *animator = [[[self class] alloc] init];
+    HNWAlertBoxControllerTransitionAnimator *animator = [[[self class] alloc] init];
     animator.animationTransition = animationTransition;
-    animator.presentTransitionAnimator = NO;
+    animator.presentFlag = NO;
     return animator;
 }
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return HNWAlertWrapperControllerTransitionDuration;
+    return HNWAlertBoxControllerTransitionDuration;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-    if (self.isPresentTransitionAnimator) {
+    if (self.isPresentFlag) {
         [self presentAnimateTransition:transitionContext];
     } else {
         [self dismissAnimateTransition:transitionContext];
@@ -155,7 +127,7 @@ static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
 - (void)presentAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    HNWAlertWrapperController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    HNWAlertBoxController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     CGRect visibleFrame = [transitionContext initialFrameForViewController:fromVC]; // 初始可见区域
     CGRect visibleBounds = CGRectMake(0, 0, CGRectGetWidth(visibleFrame), CGRectGetHeight(visibleFrame));
     [containerView addSubview:toVC.view];
@@ -164,7 +136,7 @@ static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
     switch (self.animationTransition) {
         case HNWAlertAnimationTransitionFade: {
             toVC.alertViewBox.alpha = 0;
-            [UIView animateWithDuration:HNWAlertWrapperControllerTransitionDuration animations:^{
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
                 toVC.alertViewBox.alpha = 1;
             } completion:^(BOOL finished) {
                 [transitionContext completeTransition:YES];
@@ -173,12 +145,12 @@ static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
         }
             
         case HNWAlertAnimationTransitionSlideFromLeft: {
-            __block CGRect boxFrame = toVC.alertViewBox.frame;
+            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
             boxFrame.origin.x = -CGRectGetWidth(boxFrame);
-            toVC.alertViewBox.frame = boxFrame;
-            [UIView animateWithDuration:HNWAlertWrapperControllerTransitionDuration animations:^{
+            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
                 boxFrame.origin.x = 0;
-                toVC.alertViewBox.frame = boxFrame;
+                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
             } completion:^(BOOL finished) {
                 [transitionContext completeTransition:YES];
             }];
@@ -186,12 +158,12 @@ static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
         }
             
         case HNWAlertAnimationTransitionSlideFromRight: {
-            __block CGRect boxFrame = toVC.alertViewBox.frame;
+            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
             boxFrame.origin.x = CGRectGetWidth(boxFrame);
-            toVC.alertViewBox.frame = boxFrame;
-            [UIView animateWithDuration:HNWAlertWrapperControllerTransitionDuration animations:^{
+            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
                 boxFrame.origin.x = 0;
-                toVC.alertViewBox.frame = boxFrame;
+                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
             } completion:^(BOOL finished) {
                 [transitionContext completeTransition:YES];
             }];
@@ -206,23 +178,64 @@ static const double HNWAlertWrapperControllerTransitionDuration = 0.3;
 }
 
 - (void)dismissAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-    
+    HNWAlertBoxController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    switch (self.animationTransition) {
+        case HNWAlertAnimationTransitionFade: {
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+                fromVC.alertViewBox.alpha = 0;
+            } completion:^(BOOL finished) {
+                [fromVC.view removeFromSuperview];
+                [transitionContext completeTransition:YES];
+            }];
+            break;
+        }
+            
+        case HNWAlertAnimationTransitionSlideFromLeft: {
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
+                boxFrame.origin.x = -CGRectGetWidth(boxFrame);
+                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
+            } completion:^(BOOL finished) {
+                [fromVC.view removeFromSuperview];
+                [transitionContext completeTransition:YES];
+            }];
+            break;
+        }
+            
+        case HNWAlertAnimationTransitionSlideFromRight: {
+            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
+                boxFrame.origin.x = CGRectGetWidth(boxFrame);
+                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
+            } completion:^(BOOL finished) {
+                [fromVC.view removeFromSuperview];
+                [transitionContext completeTransition:YES];
+            }];
+            break;
+        }
+            
+        default: {
+            [fromVC.view removeFromSuperview];
+            [transitionContext completeTransition:YES];
+            break;
+        }
+    }
 }
 
 @end
 
 
 
-@implementation UIView (HNWAlertWrapperController)
+@implementation UIView (HNWAlertBoxController)
 
-static const void * const UIViewAlertWrapperControllerAssociationKey = (void *)&UIViewAlertWrapperControllerAssociationKey;
+static const void * const UIViewAlertBoxControllerAssociationKey = (void *)&UIViewAlertBoxControllerAssociationKey;
 
-- (void)setAlertWrapperController:(HNWAlertWrapperController *)alertWrapperController {
-    objc_setAssociatedObject(self, UIViewAlertWrapperControllerAssociationKey, alertWrapperController, OBJC_ASSOCIATION_ASSIGN);
+- (void)setAlertBoxController:(HNWAlertBoxController *)alertBoxController {
+    objc_setAssociatedObject(self, UIViewAlertBoxControllerAssociationKey, alertBoxController, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (HNWAlertWrapperController *)alertWrapperController {
-    return objc_getAssociatedObject(self, UIViewAlertWrapperControllerAssociationKey);
+- (HNWAlertBoxController *)alertBoxController {
+    return objc_getAssociatedObject(self, UIViewAlertBoxControllerAssociationKey);
 }
 
 @end

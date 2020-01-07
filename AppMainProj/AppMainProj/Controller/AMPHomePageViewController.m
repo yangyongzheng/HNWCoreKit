@@ -32,7 +32,27 @@
 }
 
 - (void)didFinishGuidingHandler {
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 420)];
+    redView.backgroundColor = UIColor.whiteColor;
+    [redView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideAlertView:)]];
     
+    HNWAlertBoxController *boxVC = [HNWAlertBoxController boxControllerWithAlertView:redView];
+    [boxVC showWithPresentingViewController:self
+                        animationTransition:HNWAlertAnimationTransitionFade
+                                 completion:^{
+                                     
+                                 }];
+}
+
+- (void)hideAlertView:(UITapGestureRecognizer *)tap {
+    [tap.view.alertBoxController hideWithAnimationTransition:HNWAlertAnimationTransitionSlideFromRight
+                                                  completion:^{
+                                                      
+                                                  }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self didFinishGuidingHandler];
 }
 
 @end
