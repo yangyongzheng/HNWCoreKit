@@ -12,11 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HNWAlertViewBox : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame alertView:(UIView *)alertView;
-
 @property (nonatomic, readonly, strong) UIView *backgroundShadowView;
 @property (nonatomic, readonly, strong) UIView *alertViewContainer;
-@property (nonatomic, readonly, strong) UIView *alertView;
+
+@property (nullable, nonatomic, strong) UIView *alertView;
+
+- (instancetype)initWithFrame:(CGRect)frame alertView:(nullable UIView *)alertView;
 
 @end
 

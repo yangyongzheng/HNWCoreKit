@@ -38,7 +38,7 @@
     
     HNWAlertBoxController *boxVC = [HNWAlertBoxController boxControllerWithAlertView:redView];
     [boxVC showWithPresentingViewController:self
-                        animationTransition:HNWAlertAnimationTransitionFade
+                        animationTransition:HNWAlertAnimationTransitionSlideFromLeft
                                  completion:^{
                                      
                                  }];

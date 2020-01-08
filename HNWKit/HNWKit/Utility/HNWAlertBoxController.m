@@ -7,6 +7,7 @@
 //
 
 #import "HNWAlertBoxController.h"
+#import "HNWAlertViewBox.h"
 #import <objc/runtime.h>
 
 @interface HNWAlertBoxControllerTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
@@ -16,7 +17,7 @@
 
 
 @interface HNWAlertBoxController () <UIViewControllerTransitioningDelegate>
-@property (nonatomic, readwrite, strong) HNWAlertViewBox *alertViewBox;
+@property (nonatomic, strong) HNWAlertViewBox *alertViewBox;
 @property (nonatomic) HNWAlertAnimationTransition presentAnimationTransition;
 @property (nonatomic) HNWAlertAnimationTransition dismissAnimationTransition;
 @end
@@ -49,7 +50,7 @@
     if (alertView && [alertView isKindOfClass:[UIView class]]) {
         HNWAlertBoxController *vc = [[[self class] alloc] init];
         alertView.alertBoxController = vc;
-        vc.alertViewBox = [[HNWAlertViewBox alloc] initWithFrame:CGRectMake(0, 0, 300, 300) alertView:alertView];
+        vc.alertViewBox = [[HNWAlertViewBox alloc] initWithFrame:UIScreen.mainScreen.bounds alertView:alertView];
         return vc;
     } else {
         return nil;
@@ -80,9 +81,11 @@
 #pragma mark - Misc
 - (void)setupDefaultConfiguration {
     self.view.backgroundColor = [UIColor clearColor];
-    self.alertViewBox.frame = self.view.bounds;
-    self.alertViewBox.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:self.alertViewBox];
+    if (self.alertViewBox) {
+        self.alertViewBox.frame = self.view.bounds;
+        self.alertViewBox.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        [self.view addSubview:self.alertViewBox];
+    }
 }
 
 @end
@@ -133,6 +136,7 @@ static const double HNWAlertBoxControllerTransitionDuration = 0.25;
     [containerView addSubview:toVC.view];
     toVC.view.frame = visibleBounds;
     [toVC.view layoutIfNeeded];
+    // 开始动画
     switch (self.animationTransition) {
         case HNWAlertAnimationTransitionFade: {
             toVC.alertViewBox.alpha = 0;

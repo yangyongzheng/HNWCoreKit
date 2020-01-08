@@ -6,14 +6,14 @@
 //  Copyright © 2020 Young. All rights reserved.
 //
 
-#import "HNWAlertViewBox.h"
+#import <UIKit/UIKit.h>
 #import "HNWAlertAnimationTransition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HNWAlertBoxController : UIViewController
 
-@property (nonatomic, readonly, strong) HNWAlertViewBox *alertViewBox;
+@property (nonatomic, readonly, weak) UIView *alertView;
 
 + (nullable instancetype)boxControllerWithAlertView:(UIView *)alertView;
 

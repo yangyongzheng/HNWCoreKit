@@ -13,23 +13,52 @@
 @synthesize backgroundShadowView = _backgroundShadowView;
 @synthesize alertViewContainer = _alertViewContainer;
 
-- (instancetype)initWithFrame:(CGRect)frame alertView:(UIView *)alertView {
-    self = [super initWithFrame:frame];
-    if (self) {
-        if (alertView && [alertView isKindOfClass:[UIView class]]) {
-            _alertView = alertView;
-        } else {
-            _alertView = nil;
-        }
-        [self addSubview:self.backgroundShadowView];
-        [self addSubview:self.alertViewContainer];
-        if (self.alertView) {
-            [self.alertViewContainer addSubview:self.alertView];
-            self.alertView.center = CGPointMake(CGRectGetMidX(self.alertViewContainer.bounds), CGRectGetMidY(self.alertViewContainer.bounds));
-            self.alertView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-        }
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupDefaultUI];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setupDefaultUI];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame alertView:(UIView *)alertView {
+    if (self = [super initWithFrame:frame]) {
+        [self setupDefaultUI];
+        self.alertView = alertView;
+    }
+    return self;
+}
+
+- (void)setupDefaultUI {
+    [self addSubview:self.backgroundShadowView];
+    [self addSubview:self.alertViewContainer];
+}
+
+- (void)resetAlertView {
+    NSArray *subviews = self.alertViewContainer.subviews;
+    for (UIView *view in subviews) {
+        [view removeFromSuperview];
+    }
+    if (self.alertView) {
+        [self.alertViewContainer addSubview:self.alertView];
+        self.alertView.center = CGPointMake(CGRectGetMidX(self.alertViewContainer.bounds), CGRectGetMidY(self.alertViewContainer.bounds));
+        self.alertView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+    }
+}
+
+- (void)setAlertView:(UIView *)alertView {
+    if (alertView && [alertView isKindOfClass:[UIView class]]) {
+        _alertView = alertView;
+    } else {
+        _alertView = nil;
+    }
+    [self resetAlertView];
 }
 
 - (UIView *)backgroundShadowView {
