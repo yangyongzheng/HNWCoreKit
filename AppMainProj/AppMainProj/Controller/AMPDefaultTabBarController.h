@@ -6,11 +6,13 @@
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "AMPBaseTabBarController.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AMPDefaultTabBarController : AMPBaseTabBarController
+@interface AMPDefaultTabBarController : UITabBarController
+
++ (AMPDefaultTabBarController *)defaultTabBarController;
 
 @end
 

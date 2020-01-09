@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE64087C23C731530073D330 /* AMPWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE64087B23C731530073D330 /* AMPWrapperViewController.m */; };
+		CE64087F23C7558F0073D330 /* AMPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE64087E23C7558F0073D330 /* AMPWebViewController.m */; };
 		CE6BFF5A23B225070049BDF2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFF5923B225070049BDF2 /* AppDelegate.m */; };
-		CE6BFF6023B225070049BDF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BFF5E23B225070049BDF2 /* Main.storyboard */; };
 		CE6BFF6223B225080049BDF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6BFF6123B225080049BDF2 /* Assets.xcassets */; };
 		CE6BFF6523B225080049BDF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BFF6323B225080049BDF2 /* LaunchScreen.storyboard */; };
 		CE6BFF6823B225080049BDF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFF6723B225080049BDF2 /* main.m */; };
 		CE6BFF7223B225080049BDF2 /* AppMainProjTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFF7123B225080049BDF2 /* AppMainProjTests.m */; };
 		CE6BFFA523B2269B0049BDF2 /* AMPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFA423B2269B0049BDF2 /* AMPBaseViewController.m */; };
 		CE6BFFA823B226B70049BDF2 /* AMPHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFA723B226B70049BDF2 /* AMPHomePageViewController.m */; };
-		CE6BFFAB23B228A40049BDF2 /* AMPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFAA23B228A40049BDF2 /* AMPBaseNavigationController.m */; };
-		CE6BFFAE23B228C20049BDF2 /* AMPBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFAD23B228C20049BDF2 /* AMPBaseTabBarController.m */; };
 		CE6BFFB223B2293B0049BDF2 /* AMPDefaultTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFB123B2293B0049BDF2 /* AMPDefaultTabBarController.m */; };
 		CE6BFFB523B2295A0049BDF2 /* AMPDefaultNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFB423B2295A0049BDF2 /* AMPDefaultNavigationController.m */; };
 		CE6BFFE123B230F70049BDF2 /* HNWKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BFFE023B230F70049BDF2 /* HNWKit.framework */; };
 		CE70277C23B4F224002CB592 /* AMPTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70277B23B4F224002CB592 /* AMPTestViewController.m */; };
+		CEB20F3123C762980095981F /* AMPBoxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB20F3023C762980095981F /* AMPBoxNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE64087A23C731530073D330 /* AMPWrapperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPWrapperViewController.h; sourceTree = "<group>"; };
+		CE64087B23C731530073D330 /* AMPWrapperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPWrapperViewController.m; sourceTree = "<group>"; };
+		CE64087D23C7558F0073D330 /* AMPWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPWebViewController.h; sourceTree = "<group>"; };
+		CE64087E23C7558F0073D330 /* AMPWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPWebViewController.m; sourceTree = "<group>"; };
 		CE6BFF5523B225070049BDF2 /* AppMainProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMainProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6BFF5823B225070049BDF2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE6BFF5923B225070049BDF2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE6BFF5F23B225070049BDF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6BFF6123B225080049BDF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6BFF6423B225080049BDF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE6BFF6623B225080049BDF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,10 +52,6 @@
 		CE6BFFA423B2269B0049BDF2 /* AMPBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPBaseViewController.m; sourceTree = "<group>"; };
 		CE6BFFA623B226B70049BDF2 /* AMPHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPHomePageViewController.h; sourceTree = "<group>"; };
 		CE6BFFA723B226B70049BDF2 /* AMPHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPHomePageViewController.m; sourceTree = "<group>"; };
-		CE6BFFA923B228A40049BDF2 /* AMPBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPBaseNavigationController.h; sourceTree = "<group>"; };
-		CE6BFFAA23B228A40049BDF2 /* AMPBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPBaseNavigationController.m; sourceTree = "<group>"; };
-		CE6BFFAC23B228C20049BDF2 /* AMPBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPBaseTabBarController.h; sourceTree = "<group>"; };
-		CE6BFFAD23B228C20049BDF2 /* AMPBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPBaseTabBarController.m; sourceTree = "<group>"; };
 		CE6BFFB023B2293B0049BDF2 /* AMPDefaultTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPDefaultTabBarController.h; sourceTree = "<group>"; };
 		CE6BFFB123B2293B0049BDF2 /* AMPDefaultTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPDefaultTabBarController.m; sourceTree = "<group>"; };
 		CE6BFFB323B2295A0049BDF2 /* AMPDefaultNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPDefaultNavigationController.h; sourceTree = "<group>"; };
@@ -60,6 +59,9 @@
 		CE6BFFE023B230F70049BDF2 /* HNWKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HNWKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE70277A23B4F224002CB592 /* AMPTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTestViewController.h; sourceTree = "<group>"; };
 		CE70277B23B4F224002CB592 /* AMPTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTestViewController.m; sourceTree = "<group>"; };
+		CEB20F2F23C762980095981F /* AMPBoxNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPBoxNavigationController.h; sourceTree = "<group>"; };
+		CEB20F3023C762980095981F /* AMPBoxNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPBoxNavigationController.m; sourceTree = "<group>"; };
+		CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AMPPrefixHeader.pch; path = AppMainProj/AMPPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,11 +116,11 @@
 				CE6BFF5923B225070049BDF2 /* AppDelegate.m */,
 				CE681B9723B62008006792E2 /* Model */,
 				CE6BFFB623B229AE0049BDF2 /* Controller */,
-				CE6BFF5E23B225070049BDF2 /* Main.storyboard */,
 				CE6BFF6123B225080049BDF2 /* Assets.xcassets */,
 				CE6BFF6323B225080049BDF2 /* LaunchScreen.storyboard */,
 				CE6BFF6623B225080049BDF2 /* Info.plist */,
 				CE6BFF6723B225080049BDF2 /* main.m */,
+				CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */,
 			);
 			path = AppMainProj;
 			sourceTree = "<group>";
@@ -140,31 +142,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE6BFFAF23B228D20049BDF2 /* BaseController */ = {
+		CE6BFFB623B229AE0049BDF2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CE6BFFA323B2269B0049BDF2 /* AMPBaseViewController.h */,
 				CE6BFFA423B2269B0049BDF2 /* AMPBaseViewController.m */,
-				CE6BFFA923B228A40049BDF2 /* AMPBaseNavigationController.h */,
-				CE6BFFAA23B228A40049BDF2 /* AMPBaseNavigationController.m */,
-				CE6BFFAC23B228C20049BDF2 /* AMPBaseTabBarController.h */,
-				CE6BFFAD23B228C20049BDF2 /* AMPBaseTabBarController.m */,
-			);
-			path = BaseController;
-			sourceTree = "<group>";
-		};
-		CE6BFFB623B229AE0049BDF2 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CE6BFFAF23B228D20049BDF2 /* BaseController */,
 				CE6BFFB023B2293B0049BDF2 /* AMPDefaultTabBarController.h */,
 				CE6BFFB123B2293B0049BDF2 /* AMPDefaultTabBarController.m */,
 				CE6BFFB323B2295A0049BDF2 /* AMPDefaultNavigationController.h */,
 				CE6BFFB423B2295A0049BDF2 /* AMPDefaultNavigationController.m */,
+				CEB20F2F23C762980095981F /* AMPBoxNavigationController.h */,
+				CEB20F3023C762980095981F /* AMPBoxNavigationController.m */,
+				CE64087A23C731530073D330 /* AMPWrapperViewController.h */,
+				CE64087B23C731530073D330 /* AMPWrapperViewController.m */,
 				CE6BFFA623B226B70049BDF2 /* AMPHomePageViewController.h */,
 				CE6BFFA723B226B70049BDF2 /* AMPHomePageViewController.m */,
 				CE70277A23B4F224002CB592 /* AMPTestViewController.h */,
 				CE70277B23B4F224002CB592 /* AMPTestViewController.m */,
+				CE64087D23C7558F0073D330 /* AMPWebViewController.h */,
+				CE64087E23C7558F0073D330 /* AMPWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,7 +247,6 @@
 			files = (
 				CE6BFF6523B225080049BDF2 /* LaunchScreen.storyboard in Resources */,
 				CE6BFF6223B225080049BDF2 /* Assets.xcassets in Resources */,
-				CE6BFF6023B225070049BDF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,12 +266,13 @@
 			files = (
 				CE6BFFA523B2269B0049BDF2 /* AMPBaseViewController.m in Sources */,
 				CE6BFFB223B2293B0049BDF2 /* AMPDefaultTabBarController.m in Sources */,
+				CE64087F23C7558F0073D330 /* AMPWebViewController.m in Sources */,
 				CE6BFFA823B226B70049BDF2 /* AMPHomePageViewController.m in Sources */,
 				CE6BFF6823B225080049BDF2 /* main.m in Sources */,
 				CE6BFFB523B2295A0049BDF2 /* AMPDefaultNavigationController.m in Sources */,
-				CE6BFFAB23B228A40049BDF2 /* AMPBaseNavigationController.m in Sources */,
+				CEB20F3123C762980095981F /* AMPBoxNavigationController.m in Sources */,
+				CE64087C23C731530073D330 /* AMPWrapperViewController.m in Sources */,
 				CE6BFF5A23B225070049BDF2 /* AppDelegate.m in Sources */,
-				CE6BFFAE23B228C20049BDF2 /* AMPBaseTabBarController.m in Sources */,
 				CE70277C23B4F224002CB592 /* AMPTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,14 +296,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE6BFF5E23B225070049BDF2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE6BFF5F23B225070049BDF2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE6BFF6323B225080049BDF2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -437,6 +425,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 397W964N5J;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AppMainProj/AMPPrefixHeader.pch;
 				INFOPLIST_FILE = AppMainProj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,6 +446,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 397W964N5J;
 				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AppMainProj/AMPPrefixHeader.pch;
 				INFOPLIST_FILE = AppMainProj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (

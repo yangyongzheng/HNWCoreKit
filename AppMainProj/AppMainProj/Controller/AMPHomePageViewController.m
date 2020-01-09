@@ -8,7 +8,7 @@
 
 #import "AMPHomePageViewController.h"
 #import "AMPTestViewController.h"
-#import <HNWKit/HNWKit.h>
+#import "AMPWrapperViewController.h"
 
 @interface AMPHomePageViewController ()
 @property (nonatomic, strong) HNWGuidePageBrowser *guidePageBrowser;
@@ -19,7 +19,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = HNWColorWithRGBAHexInt(0xFF442F);
+    self.interactivePopEnabled = NO;
+    [self removeGoBackItem];
+    [self addGoTestItem];
+    self.navigationItem.title = @"首页";
+    self.view.backgroundColor = UIColor.whiteColor;
+    [self showGuidePages];
+}
+
+- (void)addGoTestItem {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"GoTest"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(goTestActionHandler)];
+}
+
+- (void)showGuidePages {
     UIImage *image = [UIImage imageWithColor:UIColor.redColor size:CGSizeMake(1, 1)];
     UIImage *image2 = [UIImage imageWithColor:UIColor.greenColor size:CGSizeMake(1, 1)];
     UIImage *image3 = [UIImage imageWithColor:UIColor.blueColor size:CGSizeMake(1, 1)];
@@ -31,28 +46,12 @@
     }];
 }
 
+- (void)goTestActionHandler {
+    [self.stackNavigationController pushViewController:AMPTestViewController.new animated:YES];
+}
+
 - (void)didFinishGuidingHandler {
-    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 420)];
-    redView.backgroundColor = UIColor.whiteColor;
-    [redView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideAlertView:)]];
-    
-    HNWAlertBoxController *boxVC = [HNWAlertBoxController boxControllerWithAlertView:redView];
-    [boxVC showWithPresentingViewController:self
-                        animationTransition:HNWAlertAnimationTransitionSlideFromLeft
-                                 completion:^{
-                                     
-                                 }];
-}
-
-- (void)hideAlertView:(UITapGestureRecognizer *)tap {
-    [tap.view.alertBoxController hideWithAnimationTransition:HNWAlertAnimationTransitionSlideFromRight
-                                                  completion:^{
-                                                      
-                                                  }];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self didFinishGuidingHandler];
+    NSLog(@"引导完成");
 }
 
 @end

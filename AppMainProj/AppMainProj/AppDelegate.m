@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <HNWKit/HNWKit.h>
+#import "AMPDefaultTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +17,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.backgroundColor = UIColor.whiteColor;
+    self.window.rootViewController = [AMPDefaultTabBarController defaultTabBarController];
+    [self.window makeKeyAndVisible];
     [HNWDevice initializeConfiguration];
     return YES;
 }

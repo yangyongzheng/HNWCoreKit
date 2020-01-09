@@ -1,0 +1,14 @@
+//
+//  AMPPrefixHeader.pch
+//  AppMainProj
+//
+//  Created by Young on 2020/1/9.
+//  Copyright © 2020 Young. All rights reserved.
+//
+
+#ifndef AMPPrefixHeader_pch
+#define AMPPrefixHeader_pch
+
+#import <HNWKit/HNWKit.h>
+
+#endif /* AMPPrefixHeader_pch */

@@ -7,12 +7,11 @@
 //
 
 #import "AMPTestViewController.h"
-#import <HNWKit/HNWKit.h>
+#import "AMPDefaultNavigationController.h"
+#import "AMPWebViewController.h"
 
 @interface AMPTestViewController ()
-{
-    
-}
+
 @end
 
 @implementation AMPTestViewController
@@ -21,16 +20,11 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
-    self.navigationItem.backBarButtonItem = nil;
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"GoBack"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(goBack)];
+    self.navigationItem.title = @"测试";
 }
 
-- (void)goBack {
-    [self.navigationController.parentViewController.navigationController popViewControllerAnimated:YES];
+- (void)goBackActionHandler {
+    [super goBackActionHandler];
 }
 
 @end
