@@ -44,7 +44,6 @@
 		CE6BFFE423B231820049BDF2 /* HNWKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6BFFE323B231820049BDF2 /* HNWKitDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE6BFFE923B2347A0049BDF2 /* HNWAssertNotEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6BFFE723B2347A0049BDF2 /* HNWAssertNotEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE6BFFEA23B2347A0049BDF2 /* HNWAssertNotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFE823B2347A0049BDF2 /* HNWAssertNotEmpty.m */; };
-		CE6BFFF023B257940049BDF2 /* HNWKitMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6BFFEF23B257940049BDF2 /* HNWKitMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE6DC0A823B38E62006FE9EB /* HNWTabMenuItemBadgeProviders.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6DC09C23B38E62006FE9EB /* HNWTabMenuItemBadgeProviders.m */; };
 		CE6DC0A923B38E62006FE9EB /* HNWTabMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6DC09D23B38E62006FE9EB /* HNWTabMenuView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE6DC0AA23B38E62006FE9EB /* HNWTabMenuViewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6DC09E23B38E62006FE9EB /* HNWTabMenuViewCollectionViewCell.h */; };
@@ -119,7 +118,6 @@
 		CE6BFFE323B231820049BDF2 /* HNWKitDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWKitDefines.h; sourceTree = "<group>"; };
 		CE6BFFE723B2347A0049BDF2 /* HNWAssertNotEmpty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAssertNotEmpty.h; sourceTree = "<group>"; };
 		CE6BFFE823B2347A0049BDF2 /* HNWAssertNotEmpty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAssertNotEmpty.m; sourceTree = "<group>"; };
-		CE6BFFEF23B257940049BDF2 /* HNWKitMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWKitMacros.h; sourceTree = "<group>"; };
 		CE6DC09C23B38E62006FE9EB /* HNWTabMenuItemBadgeProviders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWTabMenuItemBadgeProviders.m; sourceTree = "<group>"; };
 		CE6DC09D23B38E62006FE9EB /* HNWTabMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWTabMenuView.h; sourceTree = "<group>"; };
 		CE6DC09E23B38E62006FE9EB /* HNWTabMenuViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWTabMenuViewCollectionViewCell.h; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				CE1F890423B8BCDF00FC7126 /* HNWDevice.h */,
 				CE1F890523B8BCDF00FC7126 /* HNWDevice.m */,
 				CE6BFFE323B231820049BDF2 /* HNWKitDefines.h */,
-				CE6BFFEF23B257940049BDF2 /* HNWKitMacros.h */,
 				CE1B90ED23BB5F810005265E /* UIColor+HNWKit.h */,
 				CE1B90EE23BB5F810005265E /* UIColor+HNWKit.m */,
 				CE1B90F523BB61630005265E /* UIView+HNWKit.h */,
@@ -335,7 +332,6 @@
 				CE2E42B223B792540064025B /* HNWDateManager.h in Headers */,
 				CE6DC0AD23B38E62006FE9EB /* HNWTabMenuViewConfiguration.h in Headers */,
 				CE028D8B23B887E400EFD1A5 /* HNWPhotoManager.h in Headers */,
-				CE6BFFF023B257940049BDF2 /* HNWKitMacros.h in Headers */,
 				CE1B90FF23BB7A320005265E /* UIView+HNWNibLoading.h in Headers */,
 				CE67654923C1B7140094793D /* HNWAlertViewBox.h in Headers */,
 				CE86EF0423C4BB6E0072EA41 /* HNWAlertBoxController.h in Headers */,

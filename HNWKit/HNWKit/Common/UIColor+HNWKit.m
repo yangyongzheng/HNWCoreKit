@@ -29,7 +29,7 @@
     if ([self hnw_privateValidateHexCode:safeHexCode]) {
         return [self hnw_privateColorWithValidHexCode:safeHexCode isBeginAlpha:NO];
     } else {
-        NSAssert(0, @"入参非法，颜色创建失败：%s<%@ : %d>", __func__, HNWKitFileName, __LINE__);
+        NSAssert(0, @"入参非法，颜色创建失败");
         return [UIColor clearColor];
     }
 }
@@ -39,7 +39,7 @@
     if ([self hnw_privateValidateHexCode:safeHexCode]) {
         return [self hnw_privateColorWithValidHexCode:safeHexCode isBeginAlpha:YES];
     } else {
-        NSAssert(0, @"入参非法，颜色创建失败：%s<%@ : %d>", __func__, HNWKitFileName, __LINE__);
+        NSAssert(0, @"入参非法，颜色创建失败");
         return [UIColor clearColor];
     }
 }

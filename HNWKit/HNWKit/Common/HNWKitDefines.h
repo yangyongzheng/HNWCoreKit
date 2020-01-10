@@ -29,12 +29,25 @@
 #endif
 
 /** 拼接Token */
-#ifndef HNWKitTokenConcatenation
-#define HNWKitTokenConcatenation(t1, t2) t1 ## t2
+#ifndef HNWKitTokenConcat
+#define HNWKitTokenConcat(t1, t2) t1 ## t2
 #endif
 
-#ifndef HNWKitFileName
-#define HNWKitFileName [NSString stringWithUTF8String:__FILE__].lastPathComponent
+/** 对象引用转换 */
+#ifndef HNWKitWeakTransfer
+#define HNWKitWeakTransfer(obj) __weak typeof(obj) HNWKitKeyWeakRef(obj) = obj
+#endif
+
+#ifndef HNWKitStrongTransfer
+#define HNWKitStrongTransfer(obj) __strong typeof(HNWKitKeyWeakRef(obj)) HNWKitKeyStrongRef(obj) = HNWKitKeyWeakRef(obj)
+#endif
+
+#ifndef HNWKitKeyWeakRef
+#define HNWKitKeyWeakRef(k) HNWKitTokenConcat(k, WeakRef)
+#endif
+
+#ifndef HNWKitKeyStrongRef
+#define HNWKitKeyStrongRef(k) HNWKitTokenConcat(k, StrongRef)
 #endif
 
 #endif /* HNWKitDefines_h */

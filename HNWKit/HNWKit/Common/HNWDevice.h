@@ -19,9 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, readonly) CGFloat screenWidth;
 @property (class, nonatomic, readonly) CGFloat screenHeight;
 @property (class, nonatomic, readonly) CGFloat statusBarHeight;
+/** value is constant 44 */
 @property (class, nonatomic, readonly) CGFloat navigationBarHeight;
+/** value is constant 49 */
 @property (class, nonatomic, readonly) CGFloat tabBarHeight;
 @property (class, nonatomic, readonly) CGFloat safeAreaBottomInset;
+/** value is statusBarHeight + navigationBarHeight */
+@property (class, nonatomic, readonly) CGFloat safeAreaTopInset;
 
 @end
 

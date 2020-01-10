@@ -7,7 +7,7 @@
 //
 
 #import "HNWWeakTimer.h"
-#import "HNWKitMacros.h"
+#import "HNWKitDefines.h"
 
 @interface NSTimer (HNWWeakTimerHelper)
 + (NSTimer *)hnw_privateTimerWithTimeInterval:(NSTimeInterval)interval

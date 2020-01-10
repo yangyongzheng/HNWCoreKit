@@ -8,7 +8,7 @@
 
 #import "HNWDevice.h"
 
-#define HNWSharedDevice [HNWDevice sharedDevice]
+#define HNWDeviceSingletonInstance [HNWDevice privateSingletonInstance]
 
 @interface HNWDevice ()
 @property (nonatomic) CGFloat screenWidth;
@@ -22,46 +22,51 @@
 @implementation HNWDevice
 
 #pragma mark - Public
++ (void)initializeConfiguration {
+    [HNWDeviceSingletonInstance resetDefaultConfiguration];
+}
+
 + (CGFloat)screenWidth {
-    return HNWSharedDevice.screenWidth;
+    return HNWDeviceSingletonInstance.screenWidth;
 }
 
 + (CGFloat)screenHeight {
-    return HNWSharedDevice.screenHeight;
+    return HNWDeviceSingletonInstance.screenHeight;
 }
 
 + (CGFloat)statusBarHeight {
-    return HNWSharedDevice.statusBarHeight;
+    return HNWDeviceSingletonInstance.statusBarHeight;
 }
 
 + (CGFloat)navigationBarHeight {
-    return HNWSharedDevice.navigationBarHeight;
+    return HNWDeviceSingletonInstance.navigationBarHeight;
 }
 
 + (CGFloat)tabBarHeight {
-    return HNWSharedDevice.tabBarHeight;
+    return HNWDeviceSingletonInstance.tabBarHeight;
 }
 
 + (CGFloat)safeAreaBottomInset {
-    return HNWSharedDevice.safeAreaBottomInset;
+    return HNWDeviceSingletonInstance.safeAreaBottomInset;
 }
 
-+ (void)initializeConfiguration {
-    [HNWSharedDevice resetDefaultConfiguration];
++ (CGFloat)safeAreaTopInset {
+    return HNWDeviceSingletonInstance.statusBarHeight + HNWDeviceSingletonInstance.navigationBarHeight;
 }
 
 #pragma mark - Misc
-+ (void)load {
-    [HNWDevice sharedDevice];
+- (instancetype)init {
+    if (self = [super init]) {
+        [self resetDefaultConfiguration];
+    }
+    return self;
 }
 
-+ (HNWDevice *)sharedDevice {
++ (HNWDevice *)privateSingletonInstance {
     static HNWDevice *device = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        device = [[[self class] alloc] init];
-        [device resetDefaultConfiguration];
-        [device addDidFinishLaunchingNotification];
+        device = [[HNWDevice alloc] init];
     });
     return device;
 }
@@ -74,30 +79,27 @@
         self.navigationBarHeight = 44;
         self.tabBarHeight = 49;
         if (@available(iOS 11.0, *)) {
-            UIWindow *window = UIApplication.sharedApplication.keyWindow;
-            if (!window) {
-                window = UIApplication.sharedApplication.delegate.window;
-                if (!window) {
-                    window = UIApplication.sharedApplication.windows.firstObject;
-                }
-            }
-            self.safeAreaBottomInset = window.safeAreaInsets.bottom;
+            self.safeAreaBottomInset = self.temporaryReferWindow.safeAreaInsets.bottom;
         } else {
             self.safeAreaBottomInset = 0;
         }
     }
 }
 
-- (void)addDidFinishLaunchingNotification {
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(applicationDidFinishLaunchingNotification:)
-                                               name:UIApplicationDidFinishLaunchingNotification
-                                             object:nil];
-}
-
-- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
-    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationDidFinishLaunchingNotification object:nil];
-    [HNWDevice initializeConfiguration];
+- (UIWindow *)temporaryReferWindow {
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    if (!window) {
+        window = UIApplication.sharedApplication.delegate.window;
+        if (!window) {
+            window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+            window.backgroundColor = [UIColor whiteColor];
+            window.rootViewController = [[UIViewController alloc] init];
+            window.hidden = NO;
+            [window setNeedsLayout];
+            [window layoutIfNeeded];
+        }
+    }
+    return window;
 }
 
 @end
