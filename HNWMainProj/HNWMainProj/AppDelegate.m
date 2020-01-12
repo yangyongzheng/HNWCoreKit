@@ -49,6 +49,11 @@
 }
 
 - (void)setupBasicEnvironment {
+    [self setupWindowScene];
+    [HNWDevice initializeConfiguration];
+}
+
+- (void)setupWindowScene {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
     self.window.windowLevel = UIWindowLevelNormal;

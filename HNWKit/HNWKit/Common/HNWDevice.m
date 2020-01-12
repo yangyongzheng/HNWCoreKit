@@ -55,19 +55,13 @@
 }
 
 #pragma mark - Misc
-- (instancetype)init {
-    if (self = [super init]) {
-        [self resetDefaultConfiguration];
-    }
-    return self;
-}
-
 + (HNWDevice *)privateSingletonInstance {
     static HNWDevice *device = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         device = [[HNWDevice alloc] init];
     });
+    if (device.statusBarHeight < 1) {[device resetDefaultConfiguration];}
     return device;
 }
 
@@ -79,27 +73,33 @@
         self.navigationBarHeight = 44;
         self.tabBarHeight = 49;
         if (@available(iOS 11.0, *)) {
-            self.safeAreaBottomInset = self.temporaryReferWindow.safeAreaInsets.bottom;
+            self.safeAreaBottomInset = self.currentFrontWindow.safeAreaInsets.bottom;
         } else {
             self.safeAreaBottomInset = 0;
         }
     }
 }
 
-- (UIWindow *)temporaryReferWindow {
-    UIWindow *window = UIApplication.sharedApplication.keyWindow;
-    if (!window) {
-        window = UIApplication.sharedApplication.delegate.window;
-        if (!window) {
-            window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-            window.backgroundColor = [UIColor whiteColor];
-            window.rootViewController = [[UIViewController alloc] init];
-            window.hidden = NO;
-            [window setNeedsLayout];
-            [window layoutIfNeeded];
+- (UIWindow *)currentFrontWindow {
+    UIWindow *frontWindow = nil;
+    NSEnumerator *frontToBackWindows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
+    for (UIWindow *window in frontToBackWindows) {
+        BOOL windowOnMainScreen = [window.screen isEqual:UIScreen.mainScreen];
+        BOOL windowIsVisible = !window.hidden && window.alpha > 0;
+        BOOL windowKeyWindow = window.isKeyWindow;
+        if (windowOnMainScreen && windowIsVisible && windowKeyWindow) {
+            frontWindow = window;
+            break;
         }
     }
-    return window;
+    if (!frontWindow) {
+        frontWindow = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        frontWindow.backgroundColor = [UIColor whiteColor];
+        frontWindow.rootViewController = [[UIViewController alloc] init];
+        frontWindow.hidden = NO;
+        [frontWindow layoutIfNeeded];
+    }
+    return frontWindow;
 }
 
 @end

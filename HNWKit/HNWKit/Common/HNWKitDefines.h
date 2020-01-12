@@ -9,7 +9,7 @@
 #ifndef HNWKitDefines_h
 #define HNWKitDefines_h
 
-#import <UIKit/UIKit.h>
+#import "HNWDevice.h"
 
 #ifndef HNWKIT_EXTERN
 #define HNWKIT_EXTERN UIKIT_EXTERN
@@ -48,6 +48,35 @@
 
 #ifndef HNWKitKeyStrongRef
 #define HNWKitKeyStrongRef(k) HNWKitTokenConcat(k, StrongRef)
+#endif
+
+/** frame */
+#ifndef HNWKIT_SCREEN_WIDTH
+#define HNWKIT_SCREEN_WIDTH HNWDevice.screenWidth
+#endif
+
+#ifndef HNWKIT_SCREEN_HEIGHT
+#define HNWKIT_SCREEN_HEIGHT HNWDevice.screenHeight
+#endif
+
+#ifndef HNWKIT_STATUSBAR_HEIGHT
+#define HNWKIT_STATUSBAR_HEIGHT HNWDevice.statusBarHeight
+#endif
+
+#ifndef HNWKIT_NAVIGATIONBAR_HEIGHT
+#define HNWKIT_NAVIGATIONBAR_HEIGHT HNWDevice.navigationBarHeight
+#endif
+
+#ifndef HNWKIT_TABBAR_HEIGHT
+#define HNWKIT_TABBAR_HEIGHT HNWDevice.tabBarHeight
+#endif
+
+#ifndef HNWKIT_SAFE_AREA_INSET_TOP
+#define HNWKIT_SAFE_AREA_INSET_TOP HNWDevice.safeAreaTopInset
+#endif
+
+#ifndef HNWKIT_SAFE_AREA_INSET_BOTTOM
+#define HNWKIT_SAFE_AREA_INSET_BOTTOM HNWDevice.safeAreaBottomInset
 #endif
 
 #endif /* HNWKitDefines_h */

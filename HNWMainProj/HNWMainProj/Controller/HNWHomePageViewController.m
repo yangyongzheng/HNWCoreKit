@@ -20,4 +20,8 @@
     self.navigationItem.title = @"首页";
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
 @end
