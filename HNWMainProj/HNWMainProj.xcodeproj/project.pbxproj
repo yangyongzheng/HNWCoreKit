@@ -17,6 +17,8 @@
 		CEA3B66E23CB2AFC00B83D52 /* HNWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B66D23CB2AFC00B83D52 /* HNWBaseViewController.m */; };
 		CEA3B67123CB2B1A00B83D52 /* HNWHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67023CB2B1A00B83D52 /* HNWHomePageViewController.m */; };
 		CEA3B67523CB2CDD00B83D52 /* HNWKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA3B67423CB2CDD00B83D52 /* HNWKit.framework */; };
+		CEA3B67923CB4D8D00B83D52 /* HNWAlertBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */; };
+		CEA3B68023CB4E4400B83D52 /* HNWLayoutContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		CEA3B67023CB2B1A00B83D52 /* HNWHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWHomePageViewController.m; sourceTree = "<group>"; };
 		CEA3B67223CB2CAF00B83D52 /* HNWMainProjPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNWMainProjPrefixHeader.pch; path = HNWMainProj/SupportFiles/HNWMainProjPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		CEA3B67423CB2CDD00B83D52 /* HNWKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HNWKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA3B67723CB4D8D00B83D52 /* HNWAlertBoxController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAlertBoxController.h; sourceTree = "<group>"; };
+		CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAlertBoxController.m; sourceTree = "<group>"; };
+		CEA3B67E23CB4E4400B83D52 /* HNWLayoutContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWLayoutContentView.h; sourceTree = "<group>"; };
+		CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWLayoutContentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 		CEA3B66423CB29E100B83D52 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEA3B67A23CB4D9D00B83D52 /* Alert */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -159,6 +166,17 @@
 				CEA3B66D23CB2AFC00B83D52 /* HNWBaseViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CEA3B67A23CB4D9D00B83D52 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				CEA3B67723CB4D8D00B83D52 /* HNWAlertBoxController.h */,
+				CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */,
+				CEA3B67E23CB4E4400B83D52 /* HNWLayoutContentView.h */,
+				CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,11 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA3B68023CB4E4400B83D52 /* HNWLayoutContentView.m in Sources */,
 				CEA3B66823CB2AD000B83D52 /* HNWDefaultTabBarController.m in Sources */,
 				CEA3B64A23CB284E00B83D52 /* main.m in Sources */,
 				CEA3B66B23CB2AE900B83D52 /* HNWDefaultNavigationController.m in Sources */,
 				CEA3B63C23CB284500B83D52 /* AppDelegate.m in Sources */,
 				CEA3B67123CB2B1A00B83D52 /* HNWHomePageViewController.m in Sources */,
+				CEA3B67923CB4D8D00B83D52 /* HNWAlertBoxController.m in Sources */,
 				CEA3B66E23CB2AFC00B83D52 /* HNWBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
