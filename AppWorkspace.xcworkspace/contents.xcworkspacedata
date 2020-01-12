@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HNWKit/HNWKit.xcodeproj">
+      location = "group:HNWMainProj/HNWMainProj.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AppMainProj/AppMainProj.xcodeproj">
+      location = "group:HNWKit/HNWKit.xcodeproj">
    </FileRef>
 </Workspace>
