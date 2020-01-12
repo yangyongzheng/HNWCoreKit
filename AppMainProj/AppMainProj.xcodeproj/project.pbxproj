@@ -20,6 +20,9 @@
 		CE6BFFB523B2295A0049BDF2 /* AMPDefaultNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BFFB423B2295A0049BDF2 /* AMPDefaultNavigationController.m */; };
 		CE6BFFE123B230F70049BDF2 /* HNWKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BFFE023B230F70049BDF2 /* HNWKit.framework */; };
 		CE70277C23B4F224002CB592 /* AMPTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE70277B23B4F224002CB592 /* AMPTestViewController.m */; };
+		CE900EFC23CA11C6006A47E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE900EFB23CA11C6006A47E5 /* Main.storyboard */; };
+		CEA3B62723CB268C00B83D52 /* HNWAlertBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B62423CB268C00B83D52 /* HNWAlertBoxController.m */; };
+		CEA3B62D23CB26D000B83D52 /* HNWTransitionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B62B23CB26D000B83D52 /* HNWTransitionContainer.m */; };
 		CEB20F3123C762980095981F /* AMPBoxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB20F3023C762980095981F /* AMPBoxNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -59,9 +62,15 @@
 		CE6BFFE023B230F70049BDF2 /* HNWKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HNWKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE70277A23B4F224002CB592 /* AMPTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPTestViewController.h; sourceTree = "<group>"; };
 		CE70277B23B4F224002CB592 /* AMPTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPTestViewController.m; sourceTree = "<group>"; };
+		CE900EFB23CA11C6006A47E5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CEA3B62423CB268C00B83D52 /* HNWAlertBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWAlertBoxController.m; sourceTree = "<group>"; };
+		CEA3B62523CB268C00B83D52 /* HNWAlertAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWAlertAnimationTransition.h; sourceTree = "<group>"; };
+		CEA3B62623CB268C00B83D52 /* HNWAlertBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWAlertBoxController.h; sourceTree = "<group>"; };
+		CEA3B62B23CB26D000B83D52 /* HNWTransitionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWTransitionContainer.m; sourceTree = "<group>"; };
+		CEA3B62C23CB26D000B83D52 /* HNWTransitionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWTransitionContainer.h; sourceTree = "<group>"; };
 		CEB20F2F23C762980095981F /* AMPBoxNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPBoxNavigationController.h; sourceTree = "<group>"; };
 		CEB20F3023C762980095981F /* AMPBoxNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPBoxNavigationController.m; sourceTree = "<group>"; };
-		CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AMPPrefixHeader.pch; path = AppMainProj/AMPPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AMPPrefixHeader.pch; path = AppMainProj/Supports/AMPPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +123,12 @@
 			children = (
 				CE6BFF5823B225070049BDF2 /* AppDelegate.h */,
 				CE6BFF5923B225070049BDF2 /* AppDelegate.m */,
-				CE681B9723B62008006792E2 /* Model */,
 				CE6BFFB623B229AE0049BDF2 /* Controller */,
-				CE6BFF6123B225080049BDF2 /* Assets.xcassets */,
-				CE6BFF6323B225080049BDF2 /* LaunchScreen.storyboard */,
-				CE6BFF6623B225080049BDF2 /* Info.plist */,
-				CE6BFF6723B225080049BDF2 /* main.m */,
-				CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */,
+				CE681B9723B62008006792E2 /* Model */,
+				CEA3B62323CB266C00B83D52 /* Modules */,
+				CEA3B61123CAEB0300B83D52 /* Storyboards */,
+				CEA3B61023CAEA9C00B83D52 /* Supports */,
+				CEA3B60F23CAEA8300B83D52 /* View */,
 			);
 			path = AppMainProj;
 			sourceTree = "<group>";
@@ -163,6 +171,45 @@
 				CE64087E23C7558F0073D330 /* AMPWebViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEA3B60F23CAEA8300B83D52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEA3B61023CAEA9C00B83D52 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				CEB20F3223C76CD30095981F /* AMPPrefixHeader.pch */,
+				CE6BFF6123B225080049BDF2 /* Assets.xcassets */,
+				CE6BFF6623B225080049BDF2 /* Info.plist */,
+				CE6BFF6323B225080049BDF2 /* LaunchScreen.storyboard */,
+				CE6BFF6723B225080049BDF2 /* main.m */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		CEA3B61123CAEB0300B83D52 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE900EFB23CA11C6006A47E5 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CEA3B62323CB266C00B83D52 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CEA3B62523CB268C00B83D52 /* HNWAlertAnimationTransition.h */,
+				CEA3B62C23CB26D000B83D52 /* HNWTransitionContainer.h */,
+				CEA3B62B23CB26D000B83D52 /* HNWTransitionContainer.m */,
+				CEA3B62623CB268C00B83D52 /* HNWAlertBoxController.h */,
+				CEA3B62423CB268C00B83D52 /* HNWAlertBoxController.m */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE900EFC23CA11C6006A47E5 /* Main.storyboard in Resources */,
 				CE6BFF6523B225080049BDF2 /* LaunchScreen.storyboard in Resources */,
 				CE6BFF6223B225080049BDF2 /* Assets.xcassets in Resources */,
 			);
@@ -266,6 +314,8 @@
 			files = (
 				CE6BFFA523B2269B0049BDF2 /* AMPBaseViewController.m in Sources */,
 				CE6BFFB223B2293B0049BDF2 /* AMPDefaultTabBarController.m in Sources */,
+				CEA3B62D23CB26D000B83D52 /* HNWTransitionContainer.m in Sources */,
+				CEA3B62723CB268C00B83D52 /* HNWAlertBoxController.m in Sources */,
 				CE64087F23C7558F0073D330 /* AMPWebViewController.m in Sources */,
 				CE6BFFA823B226B70049BDF2 /* AMPHomePageViewController.m in Sources */,
 				CE6BFF6823B225080049BDF2 /* main.m in Sources */,
@@ -426,8 +476,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 397W964N5J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AppMainProj/AMPPrefixHeader.pch;
-				INFOPLIST_FILE = AppMainProj/Info.plist;
+				GCC_PREFIX_HEADER = AppMainProj/Supports/AMPPrefixHeader.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/AppMainProj/Supports/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -447,8 +497,8 @@
 				DEVELOPMENT_TEAM = 397W964N5J;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AppMainProj/AMPPrefixHeader.pch;
-				INFOPLIST_FILE = AppMainProj/Info.plist;
+				GCC_PREFIX_HEADER = AppMainProj/Supports/AMPPrefixHeader.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/AppMainProj/Supports/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

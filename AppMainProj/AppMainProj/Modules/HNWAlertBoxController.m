@@ -7,7 +7,7 @@
 //
 
 #import "HNWAlertBoxController.h"
-#import "HNWAlertViewBox.h"
+#import "HNWTransitionContainer.h"
 #import <objc/runtime.h>
 
 @interface HNWAlertBoxControllerTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
@@ -17,7 +17,8 @@
 
 
 @interface HNWAlertBoxController () <UIViewControllerTransitioningDelegate>
-@property (nonatomic, strong) HNWAlertViewBox *alertViewBox;
+@property (nonatomic, strong) HNWTransitionContainer *transitionContainer;
+@property (nonatomic, weak) UIView *alertView;
 @property (nonatomic) HNWAlertAnimationTransition presentAnimationTransition;
 @property (nonatomic) HNWAlertAnimationTransition dismissAnimationTransition;
 @end
@@ -31,7 +32,7 @@
 }
 
 - (void)dealloc {
-    self.alertViewBox.alertView.alertBoxController = nil;
+    self.alertView.alertBoxController = nil;
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
@@ -49,8 +50,14 @@
 + (instancetype)boxControllerWithAlertView:(UIView *)alertView {
     if (alertView && [alertView isKindOfClass:[UIView class]]) {
         HNWAlertBoxController *vc = [[[self class] alloc] init];
+        vc.alertView = alertView;
+        HNWTransitionContainer *container = [[HNWTransitionContainer alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        [container layoutIfNeeded];
+        [container.containerView addSubview:alertView];
+        alertView.center = CGPointMake(CGRectGetMidX(container.containerView.bounds), CGRectGetMidY(container.containerView.bounds));
+        alertView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
+        vc.transitionContainer = container;
         alertView.alertBoxController = vc;
-        vc.alertViewBox = [[HNWAlertViewBox alloc] initWithFrame:UIScreen.mainScreen.bounds alertView:alertView];
         return vc;
     } else {
         return nil;
@@ -81,10 +88,10 @@
 #pragma mark - Misc
 - (void)setupDefaultConfiguration {
     self.view.backgroundColor = [UIColor clearColor];
-    if (self.alertViewBox) {
-        self.alertViewBox.frame = self.view.bounds;
-        self.alertViewBox.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        [self.view addSubview:self.alertViewBox];
+    if (self.transitionContainer) {
+        self.transitionContainer.frame = self.view.bounds;
+        self.transitionContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        [self.view addSubview:self.transitionContainer];
     }
 }
 
@@ -138,41 +145,41 @@ static const double HNWAlertBoxControllerTransitionDuration = 0.25;
     [toVC.view layoutIfNeeded];
     // 开始动画
     switch (self.animationTransition) {
-        case HNWAlertAnimationTransitionFade: {
-            toVC.alertViewBox.alpha = 0;
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                toVC.alertViewBox.alpha = 1;
-            } completion:^(BOOL finished) {
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
-            
-        case HNWAlertAnimationTransitionSlideFromLeft: {
-            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
-            boxFrame.origin.x = -CGRectGetWidth(boxFrame);
-            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                boxFrame.origin.x = 0;
-                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            } completion:^(BOOL finished) {
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
-            
-        case HNWAlertAnimationTransitionSlideFromRight: {
-            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
-            boxFrame.origin.x = CGRectGetWidth(boxFrame);
-            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                boxFrame.origin.x = 0;
-                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            } completion:^(BOOL finished) {
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
+//        case HNWAlertAnimationTransitionFade: {
+//            toVC.alertViewBox.alpha = 0;
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                toVC.alertViewBox.alpha = 1;
+//            } completion:^(BOOL finished) {
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
+//
+//        case HNWAlertAnimationTransitionSlideFromLeft: {
+//            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
+//            boxFrame.origin.x = -CGRectGetWidth(boxFrame);
+//            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                boxFrame.origin.x = 0;
+//                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            } completion:^(BOOL finished) {
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
+//
+//        case HNWAlertAnimationTransitionSlideFromRight: {
+//            __block CGRect boxFrame = toVC.alertViewBox.alertViewContainer.frame;
+//            boxFrame.origin.x = CGRectGetWidth(boxFrame);
+//            toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                boxFrame.origin.x = 0;
+//                toVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            } completion:^(BOOL finished) {
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
             
         default: {
             [transitionContext completeTransition:YES];
@@ -184,39 +191,39 @@ static const double HNWAlertBoxControllerTransitionDuration = 0.25;
 - (void)dismissAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     HNWAlertBoxController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     switch (self.animationTransition) {
-        case HNWAlertAnimationTransitionFade: {
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                fromVC.alertViewBox.alpha = 0;
-            } completion:^(BOOL finished) {
-                [fromVC.view removeFromSuperview];
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
-            
-        case HNWAlertAnimationTransitionSlideFromLeft: {
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
-                boxFrame.origin.x = -CGRectGetWidth(boxFrame);
-                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            } completion:^(BOOL finished) {
-                [fromVC.view removeFromSuperview];
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
-            
-        case HNWAlertAnimationTransitionSlideFromRight: {
-            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
-                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
-                boxFrame.origin.x = CGRectGetWidth(boxFrame);
-                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
-            } completion:^(BOOL finished) {
-                [fromVC.view removeFromSuperview];
-                [transitionContext completeTransition:YES];
-            }];
-            break;
-        }
+//        case HNWAlertAnimationTransitionFade: {
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                fromVC.alertViewBox.alpha = 0;
+//            } completion:^(BOOL finished) {
+//                [fromVC.view removeFromSuperview];
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
+//            
+//        case HNWAlertAnimationTransitionSlideFromLeft: {
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
+//                boxFrame.origin.x = -CGRectGetWidth(boxFrame);
+//                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            } completion:^(BOOL finished) {
+//                [fromVC.view removeFromSuperview];
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
+//            
+//        case HNWAlertAnimationTransitionSlideFromRight: {
+//            [UIView animateWithDuration:HNWAlertBoxControllerTransitionDuration animations:^{
+//                CGRect boxFrame = fromVC.alertViewBox.alertViewContainer.frame;
+//                boxFrame.origin.x = CGRectGetWidth(boxFrame);
+//                fromVC.alertViewBox.alertViewContainer.frame = boxFrame;
+//            } completion:^(BOOL finished) {
+//                [fromVC.view removeFromSuperview];
+//                [transitionContext completeTransition:YES];
+//            }];
+//            break;
+//        }
             
         default: {
             [fromVC.view removeFromSuperview];

@@ -20,9 +20,10 @@
     HNWGuidePageBrowser *browser = [[[self class] alloc] init];
     browser.completionHandler = completionHandler;
     browser.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    browser.window.windowLevel = UIWindowLevelStatusBar + 50;
+    browser.window.windowLevel = UIWindowLevelAlert;
     browser.window.backgroundColor = UIColor.whiteColor;
     HNWGuidePageViewController *viewController = [HNWGuidePageViewController controllerWithGuidePageImages:guidePageImages delegate:browser];
+    browser.guidePageViewController = viewController;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     browser.window.rootViewController = navigationController;
     navigationController.view.backgroundColor = UIColor.clearColor;
@@ -33,10 +34,10 @@
 }
 
 - (void)dealloc {
-    if (self.window) {
-        [self.window resignKeyWindow];
-        self.window.hidden = YES;
-        self.window = nil;
+    if (_guidePageViewController) {_guidePageViewController = nil;}
+    if (_window) {
+        _window.hidden = YES;
+        _window = nil;
     }
 }
 
@@ -48,7 +49,6 @@
 
 #pragma mark - Misc
 - (void)didFinishGuidingHandler {
-    [self.window resignKeyWindow];
     self.window.hidden = YES;
     if (self.completionHandler) {
         self.completionHandler();

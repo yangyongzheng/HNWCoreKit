@@ -10,8 +10,9 @@
 #import "AMPTestViewController.h"
 #import "AMPWrapperViewController.h"
 
-@interface AMPHomePageViewController ()
+@interface AMPHomePageViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) HNWGuidePageBrowser *guidePageBrowser;
+@property (nonatomic, strong) UIWindow *transitionWindow;
 @end
 
 @implementation AMPHomePageViewController
@@ -25,6 +26,10 @@
     self.navigationItem.title = @"首页";
     self.view.backgroundColor = UIColor.whiteColor;
     [self showGuidePages];
+    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(15, 100, 300, 30)];
+    tf.placeholder = @"输入关键字搜索";
+    [self.view addSubview:tf];
+    [tf becomeFirstResponder];
 }
 
 - (void)addGoTestItem {
@@ -51,7 +56,7 @@
 }
 
 - (void)didFinishGuidingHandler {
-    NSLog(@"引导完成");
+    
 }
 
 @end

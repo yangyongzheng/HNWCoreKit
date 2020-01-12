@@ -21,6 +21,8 @@
     
     self.view.backgroundColor = UIColor.hnw_randomColor;
     self.navigationItem.title = @"测试";
+    
+    [NSKeyedArchiver archiveRootObject:@"" toFile:@""];
 }
 
 - (void)goBackActionHandler {
