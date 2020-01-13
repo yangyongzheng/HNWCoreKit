@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HNWAlertBoxController : UIViewController
 
++ (nullable HNWAlertBoxController *)alertBoxControllerWithAlertView:(UIView *)alertView;
+
 @end
 
 NS_ASSUME_NONNULL_END

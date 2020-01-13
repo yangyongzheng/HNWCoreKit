@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) CGFloat bottomLayoutGuideHeight;
 
-- (void)setBottomLayoutGuideHeight:(CGFloat)bottomLayoutGuideHeight animated:(BOOL)animated;
+- (void)setBottomLayoutGuideHeight:(CGFloat)bottomLayoutGuideHeight
+                   animateDuration:(NSTimeInterval)animateDuration;
 
 @end
 

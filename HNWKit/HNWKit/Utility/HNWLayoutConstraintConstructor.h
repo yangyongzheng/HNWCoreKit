@@ -20,6 +20,6 @@ UIKIT_EXTERN NSLayoutConstraint * HNWLayoutConstraintLiteMaker(id view1, NSLayou
                                                                id _Nullable view2, NSLayoutAttribute attr2,
                                                                CGFloat constant);
 
-UIKIT_EXTERN void HNWLayoutConstraintsEqualEdgeInsets(UIView *view1, UIView *view2, UIEdgeInsets insets);
+UIKIT_EXTERN NSArray<NSLayoutConstraint *> * _Nullable HNWAddConstraintsForViewEdgeInsetsToView(UIView *view, UIView *toView, UIEdgeInsets insets);
 
 NS_ASSUME_NONNULL_END

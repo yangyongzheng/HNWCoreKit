@@ -45,7 +45,7 @@
 }
 
 - (void)addConstraintsForCustomView {
-    HNWLayoutConstraintsEqualEdgeInsets(self.backgroundView, self, UIEdgeInsetsZero);
+    HNWAddConstraintsForViewEdgeInsetsToView(self.backgroundView, self, UIEdgeInsetsZero);
     
     self.bottomLayoutGuideView.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint *leading = HNWLayoutConstraintLiteMaker(self.bottomLayoutGuideView, NSLayoutAttributeLeading, self, NSLayoutAttributeLeading, 0);
@@ -62,18 +62,19 @@
     NSLayoutConstraint *trailing2 = HNWLayoutConstraintLiteMaker(self.barrierView, NSLayoutAttributeTrailing, self, NSLayoutAttributeTrailing, 0);
     [NSLayoutConstraint activateConstraints:@[top2, leading2, bottom2, trailing2]];
     
-    HNWLayoutConstraintsEqualEdgeInsets(self.contentView, self.barrierView, UIEdgeInsetsZero);
+    HNWAddConstraintsForViewEdgeInsetsToView(self.contentView, self.barrierView, UIEdgeInsetsZero);
 }
 
 - (void)setBottomLayoutGuideHeight:(CGFloat)bottomLayoutGuideHeight {
-    [self setBottomLayoutGuideHeight:bottomLayoutGuideHeight animated:NO];
+    [self setBottomLayoutGuideHeight:bottomLayoutGuideHeight animateDuration:NO];
 }
 
-- (void)setBottomLayoutGuideHeight:(CGFloat)bottomLayoutGuideHeight animated:(BOOL)animated {
+- (void)setBottomLayoutGuideHeight:(CGFloat)bottomLayoutGuideHeight
+                   animateDuration:(NSTimeInterval)animateDuration {
     _bottomLayoutGuideHeight = bottomLayoutGuideHeight;
     self.bottomLayoutGuideHeightConstraint.constant = bottomLayoutGuideHeight;
-    if (animated) {
-        [UIView animateWithDuration:0.25 animations:^{
+    if (animateDuration > 0) {
+        [UIView animateWithDuration:animateDuration animations:^{
             [self layoutIfNeeded];
         }];
     } else {

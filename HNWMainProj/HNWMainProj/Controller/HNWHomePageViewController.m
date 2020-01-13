@@ -7,11 +7,11 @@
 //
 
 #import "HNWHomePageViewController.h"
-#import "HNWLayoutContentView.h"
+#import "HNWAlertBoxController.h"
 
 @interface HNWHomePageViewController ()
 {
-    HNWLayoutContentView *_contentView;
+    UITextField *tf;
 }
 @end
 
@@ -21,14 +21,27 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"首页";
-    _contentView = [[HNWLayoutContentView alloc] initWithFrame:CGRectMake(20, 100, 200, 300)];
-    [self.view addSubview:_contentView];
-    _contentView.contentView.backgroundColor = UIColor.redColor;
+    tf = [[UITextField alloc] initWithFrame:CGRectMake(20, 100, 300, 30)];
+    [self.view addSubview:tf];
+    tf.backgroundColor = UIColor.yellowColor;
+    tf.textColor = UIColor.whiteColor;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    static BOOL isFirstFlag = YES;
+    if (isFirstFlag) {
+        isFirstFlag = NO;
+        [tf becomeFirstResponder];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    _contentView.bottomLayoutGuideHeight = arc4random() % 50;
-    NSLog(@"%f-%@", _contentView.bottomLayoutGuideHeight, _contentView.contentView);
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    redView.backgroundColor = UIColor.redColor;
+    HNWAlertBoxController *boxVC = [HNWAlertBoxController alertBoxControllerWithAlertView:redView];
+    [self presentViewController:boxVC animated:NO completion:nil];
 }
 
 @end

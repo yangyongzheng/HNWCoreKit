@@ -28,11 +28,17 @@ NSLayoutConstraint * HNWLayoutConstraintLiteMaker(id view1, NSLayoutAttribute at
     return HNWLayoutConstraintMaker(view1, attr1, NSLayoutRelationEqual, view2, attr2, 1.0, constant);
 }
 
-void HNWLayoutConstraintsEqualEdgeInsets(UIView *view1, UIView *view2, UIEdgeInsets insets) {
-    view1.translatesAutoresizingMaskIntoConstraints = NO;
-    NSLayoutConstraint *top = HNWLayoutConstraintLiteMaker(view1, NSLayoutAttributeTop, view2, NSLayoutAttributeTop, insets.top);
-    NSLayoutConstraint *leading = HNWLayoutConstraintLiteMaker(view1, NSLayoutAttributeLeading, view2, NSLayoutAttributeLeading, insets.left);
-    NSLayoutConstraint *bottom = HNWLayoutConstraintLiteMaker(view1, NSLayoutAttributeBottom, view2, NSLayoutAttributeBottom, -insets.bottom);
-    NSLayoutConstraint *trailing = HNWLayoutConstraintLiteMaker(view1, NSLayoutAttributeTrailing, view2, NSLayoutAttributeTrailing, -insets.right);
-    [NSLayoutConstraint activateConstraints:@[top, leading, bottom, trailing]];
+NSArray<NSLayoutConstraint *> * HNWAddConstraintsForViewEdgeInsetsToView(UIView *view, UIView *toView, UIEdgeInsets insets) {
+    if (view && [view isKindOfClass:[UIView class]] && toView) {
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *top = HNWLayoutConstraintLiteMaker(view, NSLayoutAttributeTop, toView, NSLayoutAttributeTop, insets.top);
+        NSLayoutConstraint *leading = HNWLayoutConstraintLiteMaker(view, NSLayoutAttributeLeading, toView, NSLayoutAttributeLeading, insets.left);
+        NSLayoutConstraint *bottom = HNWLayoutConstraintLiteMaker(view, NSLayoutAttributeBottom, toView, NSLayoutAttributeBottom, -insets.bottom);
+        NSLayoutConstraint *trailing = HNWLayoutConstraintLiteMaker(view, NSLayoutAttributeTrailing, toView, NSLayoutAttributeTrailing, -insets.right);
+        NSArray *constraints = @[top, leading, bottom, trailing];
+        [NSLayoutConstraint activateConstraints:constraints];
+        return constraints;
+    } else {
+        return nil;
+    }
 }
