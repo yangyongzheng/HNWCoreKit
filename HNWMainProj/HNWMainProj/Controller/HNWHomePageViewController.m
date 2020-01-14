@@ -7,12 +7,11 @@
 //
 
 #import "HNWHomePageViewController.h"
-#import "HNWAlertBoxViewController.h"
+#import "HNWTaskManager.h"
+#import "UIApplication+HNWKit.h"
 
 @interface HNWHomePageViewController ()
-{
-    UITextField *tf;
-}
+
 @end
 
 @implementation HNWHomePageViewController
@@ -21,14 +20,33 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"首页";
-    tf = [[UITextField alloc] initWithFrame:CGRectMake(20, 100, 300, 30)];
-    [self.view addSubview:tf];
-    tf.backgroundColor = UIColor.yellowColor;
-    tf.textColor = UIColor.whiteColor;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
+    __block NSString *lastTaskId = nil;
+    [HNWTaskManager performTasks:^dispatch_queue_t _Nonnull(dispatch_group_t  _Nonnull group, NSString * _Nonnull taskId) {
+        lastTaskId = taskId;
+        NSLog(@"taskId: %@", lastTaskId);
+        dispatch_group_enter(group);
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [NSThread sleepForTimeInterval:2];
+            dispatch_group_leave(group);
+        });
+        
+        dispatch_group_enter(group);
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [NSThread sleepForTimeInterval:5];
+            dispatch_group_leave(group);
+        });
+        
+        return dispatch_get_global_queue(0, 0);
+    } completionHandler:^(NSString * _Nonnull taskId) {
+        NSLog(@"taskId: %@ - %@", taskId, lastTaskId);
+        NSURL *url = [NSURL URLWithString:@"https://www.baidu.com/"];
+        [UIApplication.sharedApplication hnw_openURL:url completionHandler:^(BOOL success) {
+            
+        }];
+    }];
 }
 
 @end

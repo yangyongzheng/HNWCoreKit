@@ -10,5 +10,9 @@
 #define HNWMainProjPrefixHeader_pch
 
 #import <HNWKit/HNWKit.h>
+#import <AFNetworking.h>
+#import <MJRefresh.h>
+#import <SDWebImage.h>
+#import <FMDB.h>
 
 #endif /* HNWMainProjPrefixHeader_pch */

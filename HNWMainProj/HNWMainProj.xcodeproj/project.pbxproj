@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6FA9788C23CD59430052F203 /* HNWAlertBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9788B23CD59430052F203 /* HNWAlertBoxViewController.m */; };
 		C43E3D200151E8328EE51090 /* libPods-HNWMainProj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24339CB8F749C286D5F53DD /* libPods-HNWMainProj.a */; };
+		CE54072623CDDC3D0065FEFF /* UIApplication+HNWKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE54072523CDDC3D0065FEFF /* UIApplication+HNWKit.m */; };
+		CE54072923CDDE790065FEFF /* HNWTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE54072823CDDE790065FEFF /* HNWTaskManager.m */; };
 		CEA3B63C23CB284500B83D52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B63B23CB284500B83D52 /* AppDelegate.m */; };
 		CEA3B64423CB284E00B83D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA3B64323CB284E00B83D52 /* Assets.xcassets */; };
 		CEA3B64723CB284E00B83D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA3B64523CB284E00B83D52 /* LaunchScreen.storyboard */; };
@@ -41,6 +43,10 @@
 		B24339CB8F749C286D5F53DD /* libPods-HNWMainProj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNWMainProj.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98F53E5DE30C3F87CEE1C5B /* Pods-HNWMainProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNWMainProj.debug.xcconfig"; path = "Target Support Files/Pods-HNWMainProj/Pods-HNWMainProj.debug.xcconfig"; sourceTree = "<group>"; };
 		CD913EFDC77673CC6424A66B /* libPods-HNWMainProjTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNWMainProjTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE54072423CDDC3D0065FEFF /* UIApplication+HNWKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+HNWKit.h"; sourceTree = "<group>"; };
+		CE54072523CDDC3D0065FEFF /* UIApplication+HNWKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+HNWKit.m"; sourceTree = "<group>"; };
+		CE54072723CDDE790065FEFF /* HNWTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWTaskManager.h; sourceTree = "<group>"; };
+		CE54072823CDDE790065FEFF /* HNWTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWTaskManager.m; sourceTree = "<group>"; };
 		CEA3B63723CB284500B83D52 /* HNWMainProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNWMainProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3B63A23CB284500B83D52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEA3B63B23CB284500B83D52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +105,13 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		CE54072323CDD55A0065FEFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CEA3B62E23CB284400B83D52 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 				CEA3B63A23CB284500B83D52 /* AppDelegate.h */,
 				CEA3B63B23CB284500B83D52 /* AppDelegate.m */,
 				CEA3B66523CB2A9500B83D52 /* Controller */,
+				CE54072323CDD55A0065FEFF /* Model */,
 				CEA3B66423CB29E100B83D52 /* Modules */,
 				CEA3B65E23CB297A00B83D52 /* SupportFiles */,
 			);
@@ -170,6 +184,10 @@
 				CEA3B66A23CB2AE900B83D52 /* HNWDefaultNavigationController.m */,
 				CEA3B66F23CB2B1A00B83D52 /* HNWHomePageViewController.h */,
 				CEA3B67023CB2B1A00B83D52 /* HNWHomePageViewController.m */,
+				CE54072423CDDC3D0065FEFF /* UIApplication+HNWKit.h */,
+				CE54072523CDDC3D0065FEFF /* UIApplication+HNWKit.m */,
+				CE54072723CDDE790065FEFF /* HNWTaskManager.h */,
+				CE54072823CDDE790065FEFF /* HNWTaskManager.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -370,12 +388,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE54072923CDDE790065FEFF /* HNWTaskManager.m in Sources */,
 				CEA3B68023CB4E4400B83D52 /* HNWLayoutContentView.m in Sources */,
 				CEA3B66823CB2AD000B83D52 /* HNWDefaultTabBarController.m in Sources */,
 				CEA3B64A23CB284E00B83D52 /* main.m in Sources */,
 				CEA3B66B23CB2AE900B83D52 /* HNWDefaultNavigationController.m in Sources */,
 				CEA3B63C23CB284500B83D52 /* AppDelegate.m in Sources */,
 				6FA9788C23CD59430052F203 /* HNWAlertBoxViewController.m in Sources */,
+				CE54072623CDDC3D0065FEFF /* UIApplication+HNWKit.m in Sources */,
 				CEA3B67123CB2B1A00B83D52 /* HNWHomePageViewController.m in Sources */,
 				CEA3B66E23CB2AFC00B83D52 /* HNWBaseViewController.m in Sources */,
 			);
