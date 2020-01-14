@@ -7,4 +7,7 @@
    <FileRef
       location = "group:HNWKit/HNWKit.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

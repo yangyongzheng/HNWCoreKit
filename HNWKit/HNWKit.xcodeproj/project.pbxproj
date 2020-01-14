@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0725B21B2568DA051C31E0FF /* libPods-HNWKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656B787D0F2BC1A2660A648F /* libPods-HNWKit.a */; };
 		CE028D8723B87EA900EFD1A5 /* HNWPathManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CE028D8523B87EA900EFD1A5 /* HNWPathManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE028D8823B87EA900EFD1A5 /* HNWPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */; };
 		CE028D8B23B887E400EFD1A5 /* HNWPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +74,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D52B1DA95F41FA11F400F6D /* Pods-HNWKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNWKit.release.xcconfig"; path = "Target Support Files/Pods-HNWKit/Pods-HNWKit.release.xcconfig"; sourceTree = "<group>"; };
+		656B787D0F2BC1A2660A648F /* libPods-HNWKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNWKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BE20E083B6F7EC2E11C3950 /* Pods-HNWKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNWKit.debug.xcconfig"; path = "Target Support Files/Pods-HNWKit/Pods-HNWKit.debug.xcconfig"; sourceTree = "<group>"; };
 		CE028D8523B87EA900EFD1A5 /* HNWPathManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWPathManager.h; sourceTree = "<group>"; };
 		CE028D8623B87EA900EFD1A5 /* HNWPathManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWPathManager.m; sourceTree = "<group>"; };
 		CE028D8923B887E400EFD1A5 /* HNWPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWPhotoManager.h; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0725B21B2568DA051C31E0FF /* libPods-HNWKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +155,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1AF90AF57EDB61896E5901 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BE20E083B6F7EC2E11C3950 /* Pods-HNWKit.debug.xcconfig */,
+				2D52B1DA95F41FA11F400F6D /* Pods-HNWKit.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		5A33AE7407A9EE44E12B3BAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				656B787D0F2BC1A2660A648F /* libPods-HNWKit.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE644CD123C367D9008BD89F /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +244,8 @@
 				CE6BFFC723B2300D0049BDF2 /* HNWKit */,
 				CE6BFFD223B2300E0049BDF2 /* HNWKitTests */,
 				CE6BFFC623B2300D0049BDF2 /* Products */,
+				1F1AF90AF57EDB61896E5901 /* Pods */,
+				5A33AE7407A9EE44E12B3BAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +352,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE6BFFD923B2300E0049BDF2 /* Build configuration list for PBXNativeTarget "HNWKit" */;
 			buildPhases = (
+				4188DE662DF31BA48F3542D6 /* [CP] Check Pods Manifest.lock */,
 				CE6BFFC023B2300D0049BDF2 /* Headers */,
 				CE6BFFC123B2300D0049BDF2 /* Sources */,
 				CE6BFFC223B2300D0049BDF2 /* Frameworks */,
@@ -412,6 +438,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4188DE662DF31BA48F3542D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HNWKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE6BFFC123B2300D0049BDF2 /* Sources */ = {
@@ -584,6 +635,7 @@
 		};
 		CE6BFFDA23B2300E0049BDF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BE20E083B6F7EC2E11C3950 /* Pods-HNWKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -610,6 +662,7 @@
 		};
 		CE6BFFDB23B2300E0049BDF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D52B1DA95F41FA11F400F6D /* Pods-HNWKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
