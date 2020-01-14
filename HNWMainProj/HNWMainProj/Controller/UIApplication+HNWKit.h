@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)hnw_openURL:(NSURL *)url completionHandler:(void (^ _Nullable)(BOOL success))completionHandler;
 
+- (void)pushNotificationEnabled:(void (^)(BOOL granted))resultHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END
