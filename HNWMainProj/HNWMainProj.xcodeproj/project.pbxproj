@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FA9788C23CD59430052F203 /* HNWAlertBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9788B23CD59430052F203 /* HNWAlertBoxViewController.m */; };
 		CEA3B63C23CB284500B83D52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B63B23CB284500B83D52 /* AppDelegate.m */; };
 		CEA3B64423CB284E00B83D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA3B64323CB284E00B83D52 /* Assets.xcassets */; };
 		CEA3B64723CB284E00B83D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA3B64523CB284E00B83D52 /* LaunchScreen.storyboard */; };
@@ -17,7 +18,6 @@
 		CEA3B66E23CB2AFC00B83D52 /* HNWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B66D23CB2AFC00B83D52 /* HNWBaseViewController.m */; };
 		CEA3B67123CB2B1A00B83D52 /* HNWHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67023CB2B1A00B83D52 /* HNWHomePageViewController.m */; };
 		CEA3B67523CB2CDD00B83D52 /* HNWKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA3B67423CB2CDD00B83D52 /* HNWKit.framework */; };
-		CEA3B67923CB4D8D00B83D52 /* HNWAlertBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */; };
 		CEA3B68023CB4E4400B83D52 /* HNWLayoutContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6FA9788A23CD59430052F203 /* HNWAlertBoxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAlertBoxViewController.h; sourceTree = "<group>"; };
+		6FA9788B23CD59430052F203 /* HNWAlertBoxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAlertBoxViewController.m; sourceTree = "<group>"; };
 		CEA3B63723CB284500B83D52 /* HNWMainProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNWMainProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3B63A23CB284500B83D52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEA3B63B23CB284500B83D52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,8 +54,6 @@
 		CEA3B67023CB2B1A00B83D52 /* HNWHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWHomePageViewController.m; sourceTree = "<group>"; };
 		CEA3B67223CB2CAF00B83D52 /* HNWMainProjPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNWMainProjPrefixHeader.pch; path = HNWMainProj/SupportFiles/HNWMainProjPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		CEA3B67423CB2CDD00B83D52 /* HNWKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HNWKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEA3B67723CB4D8D00B83D52 /* HNWAlertBoxController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWAlertBoxController.h; sourceTree = "<group>"; };
-		CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWAlertBoxController.m; sourceTree = "<group>"; };
 		CEA3B67E23CB4E4400B83D52 /* HNWLayoutContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWLayoutContentView.h; sourceTree = "<group>"; };
 		CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWLayoutContentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,8 +171,8 @@
 		CEA3B67A23CB4D9D00B83D52 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				CEA3B67723CB4D8D00B83D52 /* HNWAlertBoxController.h */,
-				CEA3B67823CB4D8D00B83D52 /* HNWAlertBoxController.m */,
+				6FA9788A23CD59430052F203 /* HNWAlertBoxViewController.h */,
+				6FA9788B23CD59430052F203 /* HNWAlertBoxViewController.m */,
 				CEA3B67E23CB4E4400B83D52 /* HNWLayoutContentView.h */,
 				CEA3B67F23CB4E4400B83D52 /* HNWLayoutContentView.m */,
 			);
@@ -283,8 +283,8 @@
 				CEA3B64A23CB284E00B83D52 /* main.m in Sources */,
 				CEA3B66B23CB2AE900B83D52 /* HNWDefaultNavigationController.m in Sources */,
 				CEA3B63C23CB284500B83D52 /* AppDelegate.m in Sources */,
+				6FA9788C23CD59430052F203 /* HNWAlertBoxViewController.m in Sources */,
 				CEA3B67123CB2B1A00B83D52 /* HNWHomePageViewController.m in Sources */,
-				CEA3B67923CB4D8D00B83D52 /* HNWAlertBoxController.m in Sources */,
 				CEA3B66E23CB2AFC00B83D52 /* HNWBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

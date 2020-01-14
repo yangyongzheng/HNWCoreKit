@@ -7,7 +7,7 @@
 //
 
 #import "HNWHomePageViewController.h"
-#import "HNWAlertBoxController.h"
+#import "HNWAlertBoxViewController.h"
 
 @interface HNWHomePageViewController ()
 {
@@ -27,21 +27,8 @@
     tf.textColor = UIColor.whiteColor;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    static BOOL isFirstFlag = YES;
-    if (isFirstFlag) {
-        isFirstFlag = NO;
-        [tf becomeFirstResponder];
-    }
-}
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
-    redView.backgroundColor = UIColor.redColor;
-    HNWAlertBoxController *boxVC = [HNWAlertBoxController alertBoxControllerWithAlertView:redView];
-    [self presentViewController:boxVC animated:NO completion:nil];
+    
 }
 
 @end
